@@ -2,11 +2,13 @@
   <div id="app">
     <NavBar />
     <RouterView />
+    <LoginModal />
   </div>
 </template>
 
 <script setup lang="ts">
 import NavBar from './components/NavBar.vue'
+import LoginModal from './components/LoginModal.vue'
 </script>
 
 <style>

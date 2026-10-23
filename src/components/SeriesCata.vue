@@ -6,7 +6,7 @@
     <div class="filters-section">
       <input 
         v-model="searchTerm" 
-        placeholder="🔍 Buscar animes o personajes..."
+        placeholder="Buscar animes o personajes..."
         class="search-input"
       />
       <select v-model="selectedCategory" class="filter-select">

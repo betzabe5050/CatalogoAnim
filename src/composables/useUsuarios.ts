@@ -22,14 +22,10 @@ export function useUsuarios() {
       u => u.correo.toLowerCase() === correo.trim().toLowerCase()
     )
 
-  const registrar = (
-    datos: Omit<IUsuario, 'id' | 'rol' | 'permisos'>
-  ): IUsuario => {
+  const registrar = (datos: Omit<IUsuario, 'id'>): IUsuario => {
     const nuevo: IUsuario = {
       ...datos,
-      id: Date.now(),
-      rol: 'usuario',
-      permisos: ['ver-catalogo', 'comprar', 'ver-historial']
+      id: Date.now()
     }
     usuarios.value.push(nuevo)
     localStorage.setItem(CLAVE, JSON.stringify(usuarios.value))

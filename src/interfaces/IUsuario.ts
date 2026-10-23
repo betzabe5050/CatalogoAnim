@@ -7,7 +7,6 @@ export interface IUsuario {
   sugerencia?: string
   edad: number
   fechaNacimiento: string
-  contrasena: string
-  rol: 'admin' | 'usuario'
-  permisos: string[]
+  contraseña: string
 }
+export type IUsuarioSesion = Omit<IUsuario, 'contraseña'>

@@ -61,8 +61,10 @@
 <script setup lang="ts">
 import { ref, reactive, computed } from 'vue'
 import { useUsuarios } from '../composables/useUsuarios'
+import { useLoginModal } from '../composables/useLoginModal'
 
 const { correoExiste, registrar } = useUsuarios()
+const { abrirLogin } = useLoginModal()
 
 const form = reactive({
   nombre: '',
@@ -129,7 +131,7 @@ const enviar = () => {
     sugerencia: form.sugerencia.trim(),
     edad: form.edad as number,
     fechaNacimiento: form.fechaNacimiento,
-    contrasena: form.contrasena
+    contraseña: form.contrasena
   })
 
   registroExitoso.value = true
@@ -142,7 +144,7 @@ const enviar = () => {
     sugerencia: '',
     edad: null,
     fechaNacimiento: '',
-    contrasena: ''
+    contraseña: ''
   })
 }
 </script>
