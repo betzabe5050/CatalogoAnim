@@ -197,13 +197,13 @@ const closeDetails = () => {
 .main-title {
   text-align: center;
   color: #5c4033;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Quicksand',  sans-serif;
+  font-weight: 500;
   font-size: 3rem;
   margin-bottom: 30px;
   padding-bottom: 20px;
   border-bottom: 3px solid #b8957a;
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 4px rgba(92, 64, 51, 0.1);
+  letter-spacing: 1px;
 }
 
 .filters-section {
@@ -252,7 +252,7 @@ const closeDetails = () => {
 
 .section-title {
   color: #5c4033;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Quicksand',  sans-serif;
   font-size: 2.5rem;
   margin: 40px 0 20px 0;
   padding-left: 15px;

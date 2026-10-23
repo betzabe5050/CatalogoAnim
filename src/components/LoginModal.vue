@@ -14,7 +14,7 @@
             </button>
           </div>
 
-          <!-- Paso 1: elegir con qué iniciar sesión -->
+          
           <div v-if="metodo === null" class="opciones">
             <p class="subtitulo">Elige cómo quieres iniciar sesión</p>
 
@@ -96,7 +96,7 @@ const form = reactive({
   contrasena: ''
 })
 
-// Variables computadas: se calculan a partir de lo que escribe el usuario
+
 const errores = computed(() => ({
   correo: form.correo.trim() === '' ? 'El correo es obligatorio' : '',
   contrasena: form.contrasena === '' ? 'La contraseña es obligatoria' : ''

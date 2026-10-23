@@ -119,7 +119,7 @@ const reiniciar = () => {
 .ayuda-title {
   text-align: center;
   color: #5c4033;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Quicksand', sans-serif;
   font-size: 2.8rem;
 }
 

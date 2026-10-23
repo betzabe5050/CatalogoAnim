@@ -29,7 +29,7 @@ const descripcion = computed(() => String(route.meta.descripcion ?? ''))
 
 .pagina-title {
   color: #5c4033;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Quicksand', sans-serif;
   font-size: 3rem;
   margin-bottom: 15px;
 }
