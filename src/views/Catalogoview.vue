@@ -1,4 +1,5 @@
 <template>
+  
   <div class="catalog-container">
     <h1 class="main-title">Catálogo sobre Animes</h1>
     

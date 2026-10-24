@@ -1,13 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import SeriesCata from '../components/SeriesCata.vue'
+import Iniciobien from '../components/Iniciobien.vue'
 import RegistroView from '../views/RegistroView.vue'
 import EnConstruccionView from '../views/EnConstruccionView.vue'
 import AyudaView from '../views/AyudaView.vue'
+import CatalogoView from '../views/Catalogoview.vue'
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/', name: 'inicio', component: SeriesCata },
+    { path: '/', name: 'inicio', component: Iniciobien },
     { path: '/registro', name: 'registro', component: RegistroView },
     {
       path: '/multimedia',
@@ -49,6 +50,12 @@ const router = createRouter({
   path: '/ayuda',
   name: 'ayuda',
   component: AyudaView
+},
+{
+  path: '/catalogo',
+  name: 'catalogo',
+  component: CatalogoView,
+  meta: { titulo: 'Catálogo Completo' }
 }
   ]
 })

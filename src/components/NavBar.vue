@@ -72,7 +72,7 @@ const salir = () => {
 }
 
 .nav-logo {
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Quicksand', sans-serif;
   font-size: 1.8rem;
   color: #5c4033;
   text-decoration: none;
