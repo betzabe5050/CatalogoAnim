@@ -6,6 +6,7 @@ import AyudaView from '../views/AyudaView.vue'
 import CatalogoView from '../views/Catalogoview.vue'
 import TiendaView from '../views/TiendaView.vue'
 import CarritoView from '../views/CarritoView.vue'
+import EventosView from '../views/EventosView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -26,10 +27,9 @@ const router = createRouter({
     {
       path: '/eventos',
       name: 'eventos',
-      component: EnConstruccionView,
+      component: EventosView,
       meta: {
         titulo: 'Eventos',
-        descripcion: 'Aquí estará el calendario con los próximos eventos.'
       }
     },
   {
