@@ -1,11 +1,23 @@
 <template>
-  <nav class="navbar">
+ <nav class="navbar">
     <RouterLink to="/" class="nav-logo">
       <img src="/Logo.png" alt="Logo de Kiseki" class="nav-logo-img" />
-     <span>Kiseki</span>
-   </RouterLink>
+      <span>Kiseki</span>
+    </RouterLink>
 
-    <div class="nav-links">
+    <button
+      type="button"
+      class="nav-toggle"
+      :aria-expanded="menuAbierto"
+      aria-label="Abrir menú"
+      @click="menuAbierto = !menuAbierto"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="nav-links" :class="{ abierto: menuAbierto }" @click="menuAbierto = false">
       <RouterLink
         v-for="item in menu"
         :key="item.ruta"
@@ -54,6 +66,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { menu } from '../data/menu'
 import { useSesion } from '../composables/useSesion'
@@ -61,7 +74,7 @@ import { useLoginModal } from '../composables/useLoginModal'
 import { useCarrito } from '../composables/useCarrito'
 
 
-
+const menuAbierto = ref(false)
 const router = useRouter()
 const { usuarioActual, estaLogueado, cerrarSesion } = useSesion()
 const { abrirLogin } = useLoginModal()
@@ -195,11 +208,63 @@ const salir = () => {
   font-size: 0.75rem;
   font-weight: 700;
 }
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0 11px;
+  border: none;
+  border-radius: 50%;
+  background: #b8957a;
+  cursor: pointer;
+}
 
-@media (max-width: 768px) {
+.nav-toggle span {
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+  background: #f5efe8;
+}
+
+@media (max-width: 900px) {
   .navbar {
-    justify-content: center;
+    padding: 12px 18px;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    padding-top: 10px;
+  }
+
+  .nav-links.abierto {
+    display: flex;
+  }
+
+  .nav-link {
+    text-align: center;
+  }
+
+  .nav-icon {
+    margin-left: 0;
+    align-self: center;
+  }
+
+  .nav-usuario {
+    margin-left: 0;
     text-align: center;
   }
 }
+
+
 </style>
