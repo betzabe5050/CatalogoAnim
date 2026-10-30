@@ -1,6 +1,9 @@
 <template>
   <nav class="navbar">
-    <RouterLink to="/" class="nav-logo">Kiseki</RouterLink>
+    <RouterLink to="/" class="nav-logo">
+      <img src="/Logo.png" alt="Logo de Kiseki" class="nav-logo-img" />
+     <span>Kiseki</span>
+   </RouterLink>
 
     <div class="nav-links">
       <RouterLink
@@ -76,6 +79,15 @@ const salir = () => {
   font-size: 1.8rem;
   color: #5c4033;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo-img {
+  display: block;
+  height: 40px;
+  width: auto;
 }
 
 .nav-links {
