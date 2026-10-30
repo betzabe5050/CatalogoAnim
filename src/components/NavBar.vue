@@ -15,6 +15,19 @@
         {{ item.etiqueta }}
       </RouterLink>
 
+
+<RouterLink to="/carrito" class="nav-icon nav-cart" title="Carrito">
+  <svg viewBox="0 0 24 24" width="24" height="24" fill="none"
+       stroke="currentColor" stroke-width="2" stroke-linecap="round"
+       stroke-linejoin="round" aria-hidden="true">
+    <circle cx="9" cy="20" r="1.5" />
+    <circle cx="18" cy="20" r="1.5" />
+    <path d="M2 3h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6" />
+  </svg>
+  <span v-if="totalArticulos > 0" class="cart-badge">{{ totalArticulos }}</span>
+</RouterLink>
+
+
       <template v-if="estaLogueado">
         <span class="nav-usuario">Hola, {{ usuarioActual?.nombre }}</span>
         <button type="button" class="nav-salir" @click="salir">
@@ -45,10 +58,14 @@ import { useRouter } from 'vue-router'
 import { menu } from '../data/menu'
 import { useSesion } from '../composables/useSesion'
 import { useLoginModal } from '../composables/useLoginModal'
+import { useCarrito } from '../composables/useCarrito'
+
+
 
 const router = useRouter()
 const { usuarioActual, estaLogueado, cerrarSesion } = useSesion()
 const { abrirLogin } = useLoginModal()
+const { totalArticulos } = useCarrito()
 
 const salir = () => {
   cerrarSesion()
@@ -156,6 +173,27 @@ const salir = () => {
 .nav-icon:hover {
   background: #5c4033;
   transform: scale(1.08);
+}
+.nav-cart {
+  position: relative;
+  text-decoration: none;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 10px;
+  background: #b3392f;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
 }
 
 @media (max-width: 768px) {

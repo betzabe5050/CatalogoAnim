@@ -4,11 +4,15 @@ import RegistroView from '../views/RegistroView.vue'
 import EnConstruccionView from '../views/EnConstruccionView.vue'
 import AyudaView from '../views/AyudaView.vue'
 import CatalogoView from '../views/Catalogoview.vue'
+import TiendaView from '../views/TiendaView.vue'
+import CarritoView from '../views/CarritoView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', name: 'inicio', component: Iniciobien },
+    { path: '/tienda', name: 'tienda', component: TiendaView },
+    { path: '/carrito', name: 'carrito', component: CarritoView },
     { path: '/registro', name: 'registro', component: RegistroView },
     {
       path: '/multimedia',
@@ -28,15 +32,15 @@ const router = createRouter({
         descripcion: 'Aquí estará el calendario con los próximos eventos.'
       }
     },
-    {
-      path: '/carrito',
-      name: 'carrito',
-      component: EnConstruccionView,
-      meta: {
-        titulo: 'Carrito',
-        descripcion: 'Aquí verás los artículos agregados y el total a pagar.'
-      }
-    },
+  {
+  path: '/carrito',
+  name: 'carrito',
+  component: () => import('../views/CarritoView.vue'),
+  meta: {
+    titulo: 'Carrito',
+    descripcion: 'Revisa y gestiona los productos de tu carrito'
+  }
+},
     {
       path: '/historial',
       name: 'historial',

@@ -1,33 +1,30 @@
 <template>
   <div class="inicio-wrapper">
-    
     <header class="hero-section">
       <h1 class="hero-title">Bienvenido a Kiseki</h1>
       <p class="hero-subtitle">Tu universo de anime en un solo lugar</p>
     </header>
 
-    
-    <div class="cards-grid">
-      <RouterLink to="/multimedia" class="card">
-        <div class="card-icon">📺</div>
-        <h3>Multimedia</h3>
-        <p>Nose</p>
-      </RouterLink>
+    <section class="about-section">
+      <div class="about-logo">
+        <img src="/Logo.png" alt="Logo de Kiseki" />
+      </div>
 
-      <RouterLink to="/carrito" class="card">
-        <div class="card-icon">🛍️</div>
-        <h3>Tienda</h3>
-        <p>Encuentra tus favoritos.</p>
-      </RouterLink>
+      <div class="about-text">
+        <h2 class="section-title">¿Quiénes somos?</h2>
+        <p>
+          Kiseki es una página dedicada al anime. Aquí encontrarás recomendaciones
+          de series para descubrir tu próxima historia favorita, con su sinopsis,
+          sus personajes y los lugares donde verlas.
+        </p>
+        <p>
+          También contamos con una tienda de productos de colección, como funkos,
+          mangas y merch, organizada por categorías, además de eventos para que
+          la comunidad se encuentre y comparta su pasión.
+        </p>
+      </div>
+    </section>
 
-      <RouterLink to="/eventos" class="card">
-        <div class="card-icon">📅</div>
-        <h3>Eventos</h3>
-        <p>Convenciones y bazares.</p>
-      </RouterLink>
-    </div>
-
-    
     <section class="preview-section">
       <h2 class="section-title">Recomendaciones Destacadas</h2>
       <div class="series-grid">
@@ -43,7 +40,7 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Botón para ir al catálogo completo -->
       <div class="btn-container">
         <RouterLink to="/catalogo" class="btn-ver-todo">
@@ -51,7 +48,6 @@
         </RouterLink>
       </div>
     </section>
-
   </div>
 </template>
 
@@ -90,35 +86,48 @@ const series = ref<IAnime[]>(animes)
   font-size: 1.2rem;
 }
 
-/* 2. Tarjetas */
-.cards-grid {
+/* 2. Quiénes somos */
+.about-section {
   display: flex;
-  gap: 20px;
-  margin-bottom: 50px;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 60px;
+  padding: 40px;
+  background: linear-gradient(145deg, #f5efe8 0%, #e8dccc 100%);
+  border-radius: 24px;
+  box-shadow: 0 10px 35px rgba(139, 115, 85, 0.2);
 }
 
-.card {
+.about-logo {
+  flex: 0 0 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 248, 240, 0.9);
+  border: 3px solid #d4c5b2;
+  border-radius: 50%;
+  box-shadow: 0 8px 25px rgba(139, 115, 85, 0.15);
+}
+
+.about-logo img {
+  width: 120px;
+  height: auto;
+}
+
+.about-text {
   flex: 1;
-  min-width: 200px;
-  background: #f5efe8;
-  padding: 30px 20px;
-  border-radius: 15px;
-  text-align: center;
-  text-decoration: none;
-  color: #5c4033;
-  border: 2px solid transparent;
-  transition: all 0.3s;
 }
 
-.card:hover {
-  border-color: #b8957a;
-  transform: translateY(-5px);
+.about-text .section-title {
+  margin-bottom: 18px;
 }
 
-.card-icon {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
+.about-text p {
+  color: #6b5a4a;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 12px;
 }
 
 /* 3. Vista previa del catálogo */
@@ -204,8 +213,19 @@ const series = ref<IAnime[]>(animes)
 }
 
 @media (max-width: 768px) {
-  .cards-grid {
+  .about-section {
     flex-direction: column;
+    padding: 28px 22px;
+    }
+
+  .about-logo {
+    flex-basis: auto;
+    width: 170px;
+    height: 170px;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
   }
 }
 </style>

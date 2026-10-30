@@ -4,7 +4,7 @@ export const menu: IMenuItem[] = [
   { etiqueta: 'Inicio', ruta: '/' },
   { etiqueta: 'Multimedia', ruta: '/multimedia' },
   { etiqueta: 'Eventos', ruta: '/eventos' },
-  { etiqueta: 'Carrito', ruta: '/carrito' },
   { etiqueta: 'Historial', ruta: '/historial' },
-  { etiqueta: 'Ayuda', ruta: '/ayuda' }
+  { etiqueta: 'Ayuda', ruta: '/ayuda' },
+  { etiqueta: 'Tienda', ruta: '/tienda' },
 ]
