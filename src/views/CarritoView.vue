@@ -75,7 +75,7 @@ const { items, totalArticulos, totalPagar, agregar, quitar, eliminar, vaciar } =
 .btn-principal {
   padding: 10px 24px;
   border-radius: 30px;
-  background: linear-gradient(135deg, #b8957a, #a8846b);
+  background: linear-gradient(135deg, var(--color-principal), var(--color-principal-oscuro));
   color: #f5efe8;
   font-weight: 600;
   text-decoration: none;
@@ -117,7 +117,7 @@ const { items, totalArticulos, totalPagar, agregar, quitar, eliminar, vaciar } =
 .cantidad button {
   width: 30px;
   height: 30px;
-  border: 2px solid #b8957a;
+  border: 2px solid var(--color-principal);
   border-radius: 50%;
   background: none;
   color: #5c4033;
@@ -126,7 +126,7 @@ const { items, totalArticulos, totalPagar, agregar, quitar, eliminar, vaciar } =
 }
 
 .cantidad button:hover {
-  background: #b8957a;
+  background: var(--color-principal);
   color: #f5efe8;
 }
 

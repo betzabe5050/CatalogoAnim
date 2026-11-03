@@ -58,7 +58,7 @@ const anio = new Date().getFullYear()
   margin: 40px auto 20px;
   padding: 24px 30px 16px;
   width: 100%;
-  background: linear-gradient(145deg, #f5efe8, #e8dccc);
+  background: linear-gradient(145deg, var(--color-principal-claro) 0%, var(--color-principal) 45%, var(--color-principal-profundo) 100%);
   border-radius: 20px;
   box-shadow: 0 8px 25px rgba(139, 115, 85, 0.25);
   color: #5c4033;
@@ -101,7 +101,7 @@ const anio = new Date().getFullYear()
 }
 
 .footer-enlaces a:hover {
-  color: #b8957a;
+  color: var(--color-principal);
 }
 
 .footer-redes {
@@ -116,7 +116,7 @@ const anio = new Date().getFullYear()
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #b8957a;
+  background: var(--color-principal);
   color: #f5efe8;
   transition: all 0.3s;
 }
@@ -131,6 +131,34 @@ const anio = new Date().getFullYear()
   text-align: center;
   font-size: 0.85rem;
   opacity: 0.8;
+}
+
+.footer {
+  background: linear-gradient(145deg, var(--color-principal) 0%, var(--color-principal-oscuro) 100%);
+  color: var(--color-crema);
+  box-shadow: 0 8px 25px rgba(60, 0, 10, 0.4);
+}
+
+.footer-logo {
+  height: 48px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  background: var(--color-crema);
+}
+
+.footer-enlaces a { color: var(--color-crema); }
+.footer-enlaces a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.footer-redes a {
+  background: var(--color-crema);
+  color: var(--color-principal);
+}
+.footer-redes a:hover {
+  background: var(--color-vino);
+  color: var(--color-crema);
 }
 
 @media (max-width: 700px) {

@@ -118,7 +118,7 @@ h3 {
   padding: 8px 16px;
   border: none;
   border-radius: 30px;
-  background: linear-gradient(135deg, #b8957a, #a8846b);
+  background: linear-gradient(135deg, var(--color-principal), var(--color-principal-oscuro));
   color: #f5efe8;
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;

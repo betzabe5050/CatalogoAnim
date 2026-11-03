@@ -12,12 +12,12 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', name: 'inicio', component: Iniciobien },
-    { path: '/tienda', name: 'tienda', component: TiendaView },
+    { path: '/tienda/:categoria?', name: 'tienda', component: TiendaView },
     { path: '/carrito', name: 'carrito', component: CarritoView },
     { path: '/registro', name: 'registro', component: RegistroView },
     
     {
-      path: '/eventos',
+      path: '/eventos/:categoria?',
       name: 'eventos',
       component: EventosView,
       meta: {

@@ -4,28 +4,22 @@
     <p class="subtitulo">Convenciones, cosplay y reuniones de la comunidad anime.</p>
 
     <div class="filtros">
-      <button
-        v-for="t in tipos"
-        :key="t"
-        type="button"
-        class="filtro"
-        :class="{ activo: tipoActivo === t }"
-        @click="tipoActivo = t"
-      >
-        {{ t }}
-      </button>
+      <span class="categoria-activa">{{ tipoActivo }}</span>
+      <RouterLink v-if="tipoActivo !== 'Todos'" to="/eventos" class="ver-todos">
+        Ver todos los eventos
+      </RouterLink>
     </div>
 
     <div class="contenido">
       <div class="calendario">
         <FullCalendar ref="calendario" :options="opcionesCalendario">
-  <template #eventContent="arg">
-    <div class="evento-marca">
-      <img src="/img/marcador-evento.png" alt="" class="evento-icono" />
-      <span class="evento-titulo">{{ arg.event.title }}</span>
-    </div>
-  </template>
-</FullCalendar>
+          <template #eventContent="arg">
+            <div class="evento-marca">
+              <img src="/img/marcador-evento.png" alt="" class="evento-icono" />
+              <span class="evento-titulo">{{ arg.event.title }}</span>
+            </div>
+          </template>
+        </FullCalendar>
       </div>
 
       <aside class="lateral">
@@ -67,20 +61,38 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
+import { useRoute} from 'vue-router'
 import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import esLocale from '@fullcalendar/core/locales/es'
 import type { EventClickArg } from '@fullcalendar/core'
 import { eventos } from '../data/eventos'
 import type { IEvento } from '../interfaces/IEvento'
+import { normalizar } from '../utils/normalizar'
+
+const route = useRoute()
+
 
 const tipos = ['Todos', 'Convención', 'Cosplay', 'Comunidad']
-const tipoActivo = ref('Todos')
+
+
+function tipoDesdeRuta(): string {
+  const param = String(route.params.categoria ?? '')
+  return tipos.find(t => normalizar(t) === normalizar(param)) ?? 'Todos'
+}
+
+const tipoActivo = ref(tipoDesdeRuta())
+
+
+watch(() => route.params.categoria, () => {
+  if (route.name !== 'eventos') return
+  tipoActivo.value = tipoDesdeRuta()
+})
+
+
 const seleccionado = ref<IEvento | null>(null)
 const calendario = ref<InstanceType<typeof FullCalendar> | null>(null)
-
-
 
 const filtrados = computed(() =>
   tipoActivo.value === 'Todos'
@@ -92,13 +104,6 @@ const ordenados = computed(() =>
   [...filtrados.value].sort((a, b) => a.fecha.localeCompare(b.fecha))
 )
 
-// FullCalendar toma la fecha final como "exclusiva", por eso se suma un día
-function sumarDia(fecha: string): string {
-  const d = new Date(fecha + 'T12:00:00')
-  d.setDate(d.getDate() + 1)
-  return d.toISOString().slice(0, 10)
-}
-
 function formatear(fecha: string): string {
   return new Date(fecha + 'T12:00:00').toLocaleDateString('es-MX', {
     day: 'numeric',
@@ -107,19 +112,30 @@ function formatear(fecha: string): string {
   })
 }
 
-// Mueve el calendario al mes de esa fecha
+
+function dias(inicio: string, fin?: string): string[] {
+  const lista: string[] = []
+  const d = new Date(inicio + 'T12:00:00')
+  const ultimo = new Date((fin ?? inicio) + 'T12:00:00')
+  while (d <= ultimo) {
+    lista.push(d.toISOString().slice(0, 10))
+    d.setDate(d.getDate() + 1)
+  }
+  return lista
+}
+
+
 function irAFecha(fecha: string) {
   calendario.value?.getApi().gotoDate(fecha)
 }
 
-// Al hacer clic en la lista: abre el detalle y mueve el calendario
 function irAEvento(e: IEvento) {
   seleccionado.value = e
   irAFecha(e.fecha)
 }
 
-// Al cambiar de categoría: va al próximo evento de esa categoría
-watch(tipoActivo, () => {
+
+function irAlProximo() {
   const hoy = new Date().toISOString().slice(0, 10)
   const proximo =
     ordenados.value.find(e => (e.fechaFin ?? e.fecha) >= hoy) ?? ordenados.value[0]
@@ -131,6 +147,14 @@ watch(tipoActivo, () => {
 
   irAFecha(proximo.fecha)
   seleccionado.value = tipoActivo.value === 'Todos' ? null : proximo
+}
+
+
+watch(tipoActivo, irAlProximo)
+
+
+onMounted(() => {
+  if (tipoActivo.value !== 'Todos') irAlProximo()
 })
 
 const opcionesCalendario = computed(() => ({
@@ -138,14 +162,17 @@ const opcionesCalendario = computed(() => ({
   initialView: 'dayGridMonth',
   locale: esLocale,
   height: 'auto',
-  events: filtrados.value.map(e => ({
-    id: String(e.id),
-    title: e.titulo,
-    start: e.fecha,
-    end: e.fechaFin ? sumarDia(e.fechaFin) : undefined
-  })),
+  // Un marcador por cada día del evento
+  events: filtrados.value.flatMap(e =>
+    dias(e.fecha, e.fechaFin).map(dia => ({
+      title: e.titulo,
+      start: dia,
+      extendedProps: { eventoId: e.id }
+    }))
+  ),
   eventClick: (info: EventClickArg) => {
-    seleccionado.value = eventos.find(e => String(e.id) === info.event.id) ?? null
+    seleccionado.value =
+      eventos.find(e => e.id === info.event.extendedProps.eventoId) ?? null
   }
 }))
 </script>
@@ -163,17 +190,19 @@ const opcionesCalendario = computed(() => ({
 
 .filtros { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 20px 0; }
 
-.filtro {
-  padding: 8px 18px;
-  border: 2px solid #b8957a;
+.categoria-activa {
+  padding: 8px 22px;
   border-radius: 30px;
-  background: none;
-  color: #5c4033;
-  font-family: inherit;
+  background: var(--color-principal);
+  color: #f5efe8;
   font-weight: 600;
-  cursor: pointer;
 }
-.filtro.activo { background: #b8957a; color: #f5efe8; }
+
+.ver-todos {
+  color: #5c4033;
+  font-weight: 600;
+  text-decoration: underline;
+}
 
 /* Calendario a la izquierda y lista a la derecha */
 .contenido {
@@ -190,12 +219,14 @@ const opcionesCalendario = computed(() => ({
   box-shadow: 0 8px 25px rgba(139, 115, 85, 0.2);
 
   /* Colores de los botones del calendario */
-  --fc-button-bg-color: #b8957a;
-  --fc-button-border-color: #b8957a;
+  --fc-button-bg-color: var(--color-principal);
+  --fc-button-border-color: var(--color-principal);
   --fc-button-hover-bg-color: #5c4033;
   --fc-button-hover-border-color: #5c4033;
   --fc-button-active-bg-color: #5c4033;
   --fc-button-active-border-color: #5c4033;
+
+  /* Los eventos se ven como marcador, sin barra de color */
   --fc-event-bg-color: transparent;
   --fc-event-border-color: transparent;
   --fc-event-text-color: #5c4033;
@@ -206,7 +237,7 @@ const opcionesCalendario = computed(() => ({
   padding: 20px;
   border-radius: 20px;
   background: #fdf6ee;
-  border: 2px solid #b8957a;
+  border: 2px solid var(--color-principal);
 }
 .detalle h2 { margin-top: 0; }
 .meta { opacity: 0.8; }
@@ -231,7 +262,7 @@ const opcionesCalendario = computed(() => ({
   border: 2px solid transparent;
   cursor: pointer;
 }
-.lista-item.activo { border-color: #b8957a; }
+.lista-item.activo { border-color: var(--color-principal); }
 .lista-item small { display: block; opacity: 0.75; }
 
 .punto {
@@ -269,20 +300,41 @@ const opcionesCalendario = computed(() => ({
   padding: 10px 22px;
   border: none;
   border-radius: 30px;
-  background: #b8957a;
+  background: var(--color-principal);
   color: #f5efe8;
   font-family: inherit;
   font-weight: 600;
   cursor: pointer;
 }
+
+
+.eventos { color: var(--color-crema); }
+
+.categoria-activa {
+  background: var(--color-crema);
+  color: var(--color-principal);
+}
+
+.ver-todos { color: var(--color-crema); }
+
+.btn-link {
+  background: var(--color-crema);
+  color: var(--color-principal);
+}
+
+
+.calendario,
+.detalle,
+.lista-item { color: #5c4033; }
+
+
+
 @media (max-width: 900px) {
   .contenido { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 600px) {
   .eventos { padding: 12px; }
-}
-@media (max-width: 600px) {
   .evento-icono { width: 16px; height: 16px; }
   .evento-titulo { font-size: 0.65rem; }
 }

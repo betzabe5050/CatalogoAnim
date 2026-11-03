@@ -4,24 +4,12 @@
     <p class="subtitulo">Productos de anime organizados por categoría.</p>
 
     <div class="filtros">
-      <button
-        type="button"
-        class="filtro"
-        :class="{ activo: categoriaActiva === '' }"
-        @click="categoriaActiva = ''"
-      >
-        Todos
-      </button>
-      <button
-        v-for="cat in categorias"
-        :key="cat"
-        type="button"
-        class="filtro"
-        :class="{ activo: categoriaActiva === cat }"
-        @click="categoriaActiva = cat"
-      >
-        {{ cat }}
-      </button>
+      <span class="categoria-activa">
+        {{ categoriaActiva === '' ? 'Todos' : categoriaActiva }}
+      </span>
+      <RouterLink v-if="categoriaActiva !== ''" to="/tienda" class="ver-todos">
+        Ver toda la tienda
+      </RouterLink>
     </div>
 
     <div class="grid">
@@ -41,18 +29,26 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { useRoute } from 'vue-router'
 import type { IProducto, CategoriaProducto } from '../interfaces/IProducto'
 import { productos } from '../data/productos'
 import { useCarrito } from '../composables/useCarrito'
+import { normalizar } from '../utils/normalizar'
 import TarjetaProducto from '../components/TarjetaProducto.vue'
 
+const route = useRoute()
 const { agregar } = useCarrito()
 
-const categoriaActiva = ref<CategoriaProducto | ''>('')
 const mensaje = ref('')
 let temporizador: ReturnType<typeof setTimeout> | undefined
 
 const categorias = computed(() => [...new Set(productos.map(p => p.categoria))])
+
+
+const categoriaActiva = computed<CategoriaProducto | ''>(() => {
+  const param = String(route.params.categoria ?? '')
+  return categorias.value.find(c => normalizar(c) === normalizar(param)) ?? ''
+})
 
 const productosFiltrados = computed(() =>
   categoriaActiva.value === ''
@@ -95,31 +91,24 @@ const alAgregar = (producto: IProducto) => {
 .filtros {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 14px;
   margin-bottom: 25px;
 }
 
-.filtro {
-  padding: 8px 20px;
-  border: 2px solid #d4c5b2;
+.categoria-activa {
+  padding: 8px 22px;
   border-radius: 30px;
-  background: rgba(255, 248, 240, 0.8);
-  color: #5c4033;
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.filtro:hover {
-  border-color: #b8957a;
-}
-
-.filtro.activo {
-  background: #b8957a;
-  border-color: #b8957a;
+  background: var(--color-principal);
   color: #f5efe8;
+  font-weight: 600;
+}
+
+.ver-todos {
+  color: #5c4033;
+  font-weight: 600;
+  text-decoration: underline;
 }
 
 .grid {
