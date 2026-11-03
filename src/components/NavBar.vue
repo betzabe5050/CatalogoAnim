@@ -92,7 +92,7 @@ const { usuarioActual, estaLogueado, cerrarSesion } = useSesion()
 const { abrirLogin } = useLoginModal()
 const { totalArticulos } = useCarrito()
 
-
+// Marca el título como activo también cuando estás dentro de un submenú
 const esActivo = (ruta: string) =>
   route.path === ruta || route.path.startsWith(ruta + '/')
 
@@ -112,9 +112,9 @@ const salir = () => {
   width: 100%;
   margin: 0 auto 20px auto;
   padding: 14px 30px;
-  background: linear-gradient(145deg, var(--color-principal-claro) 0%, var(--color-principal) 45%, var(--color-principal-profundo) 100%);
+  background: var(--color-principal);
   border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(139, 115, 85, 0.25);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
   position: sticky;
   top: 10px;
   z-index: 100;
@@ -123,17 +123,21 @@ const salir = () => {
 .nav-logo {
   font-family: 'Quicksand', sans-serif;
   font-size: 1.8rem;
-  color: #5c4033;
+  color: #ffffff;
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
+/* El logo va en un recuadro blanco para que se vea sobre el rojo */
 .nav-logo-img {
   display: block;
-  height: 40px;
+  height: 48px;
   width: auto;
+  padding: 4px 8px;
+  border-radius: 12px;
+  background: #ffffff;
 }
 
 .nav-links {
@@ -151,20 +155,20 @@ const salir = () => {
   display: inline-block;
   padding: 8px 16px;
   border-radius: 30px;
-  color: #5c4033;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s;
 }
 
 .nav-link:hover {
-  background: rgba(196, 32, 55, 0.2);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .nav-link.router-link-exact-active,
 .nav-link.nav-link-activo {
-  background: var(--color-principal);
-  color: #f5efe8;
+  background: #ffffff;
+  color: var(--color-principal);
 }
 
 .flecha {
@@ -172,7 +176,7 @@ const salir = () => {
   margin-left: 2px;
 }
 
-
+/* Submenú desplegable (Tienda y Eventos) */
 .submenu {
   display: none;
   position: absolute;
@@ -182,9 +186,9 @@ const salir = () => {
   margin: 0;
   padding: 8px;
   list-style: none;
-  background: #f5efe8;
+  background: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(139, 115, 85, 0.25);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
   z-index: 200;
 }
 
@@ -197,33 +201,33 @@ const salir = () => {
   display: block;
   padding: 8px 14px;
   border-radius: 12px;
-  color: #5c4033;
+  color: var(--texto);
   font-weight: 600;
   text-decoration: none;
   transition: all 0.3s;
 }
 
 .submenu-link:hover {
-  background: rgba(196, 32, 55, 0.2);
+  background: rgba(196, 32, 55, 0.12);
 }
 
 .submenu-link.router-link-exact-active {
   background: var(--color-principal);
-  color: #f5efe8;
+  color: #ffffff;
 }
 
 .nav-usuario {
   margin-left: 8px;
-  color: #5c4033;
+  color: #ffffff;
   font-weight: 600;
 }
 
 .nav-salir {
   padding: 8px 16px;
   background: none;
-  border: 2px solid var(--color-principal);
+  border: 2px solid #ffffff;
   border-radius: 30px;
-  color: #5c4033;
+  color: #ffffff;
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   cursor: pointer;
@@ -231,8 +235,8 @@ const salir = () => {
 }
 
 .nav-salir:hover {
-  background: var(--color-principal);
-  color: #f5efe8;
+  background: #ffffff;
+  color: var(--color-principal);
 }
 
 .nav-icon {
@@ -244,14 +248,15 @@ const salir = () => {
   margin-left: 8px;
   border: none;
   border-radius: 50%;
-  background: var(--color-principal);
-  color: #f5efe8;
+  background: #ffffff;
+  color: var(--color-principal);
   cursor: pointer;
   transition: all 0.3s;
 }
 
 .nav-icon:hover {
-  background: #5c4033;
+  background: var(--texto);
+  color: #ffffff;
   transform: scale(1.08);
 }
 
@@ -271,13 +276,13 @@ const salir = () => {
   height: 20px;
   padding: 0 5px;
   border-radius: 10px;
-  background: #5c4033;
-  color: #fff;
+  background: var(--texto);
+  color: #ffffff;
   font-size: 0.75rem;
   font-weight: 700;
 }
 
-
+/* Botón de hamburguesa (solo se ve en pantallas pequeñas) */
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -288,7 +293,7 @@ const salir = () => {
   padding: 0 11px;
   border: none;
   border-radius: 50%;
-  background: var(--color-principal);
+  background: #ffffff;
   cursor: pointer;
 }
 
@@ -296,61 +301,9 @@ const salir = () => {
   display: block;
   height: 3px;
   border-radius: 2px;
-  background: #f5efe8;
+  background: var(--color-principal);
 }
 
-/* ===== Menú en degradado rojo ===== */
-.navbar {
-  background: linear-gradient(145deg, var(--color-principal) 0%, var(--color-principal-oscuro) 100%);
-  box-shadow: 0 8px 25px rgba(60, 0, 10, 0.4);
-}
-
-.nav-logo { color: var(--color-crema); }
-
-/* El logo va en un recuadro crema para que se vea sobre el rojo */
-.nav-logo-img {
-  height: 48px;
-  padding: 4px 8px;
-  border-radius: 12px;
-  background: var(--color-crema);
-}
-
-.nav-link { color: var(--color-crema); }
-.nav-link:hover { background: rgba(255, 245, 238, 0.2); }
-
-.nav-link.router-link-exact-active,
-.nav-link.nav-link-activo {
-  background: var(--color-crema);
-  color: var(--color-principal);
-}
-
-.nav-usuario { color: var(--color-crema); }
-
-.nav-salir {
-  border-color: var(--color-crema);
-  color: var(--color-crema);
-}
-.nav-salir:hover {
-  background: var(--color-crema);
-  color: var(--color-principal);
-}
-
-.nav-icon {
-  background: var(--color-crema);
-  color: var(--color-principal);
-}
-.nav-icon:hover {
-  background: var(--color-vino);
-  color: var(--color-crema);
-}
-
-.cart-badge {
-  background: var(--color-vino);
-  color: var(--color-crema);
-}
-
-.nav-toggle { background: var(--color-crema); }
-.nav-toggle span { background: var(--color-principal); }
 @media (max-width: 900px) {
   .navbar {
     padding: 12px 18px;
@@ -388,7 +341,7 @@ const salir = () => {
     display: none;
   }
 
- 
+  /* En celular el submenú se ve siempre desplegado bajo su título */
   .nav-item .submenu,
   .nav-item:hover .submenu,
   .nav-item:focus-within .submenu {
@@ -401,7 +354,17 @@ const salir = () => {
   }
 
   .submenu-link {
+    color: #ffffff;
     text-align: center;
+  }
+
+  .submenu-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .submenu-link.router-link-exact-active {
+    background: #ffffff;
+    color: var(--color-principal);
   }
 
   .nav-icon {

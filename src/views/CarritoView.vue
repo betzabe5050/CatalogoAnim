@@ -52,14 +52,14 @@ const { items, totalArticulos, totalPagar, agregar, quitar, eliminar, vaciar } =
   max-width: 900px;
   margin: 0 auto;
   padding: 30px;
-  background: linear-gradient(145deg, #f5efe8 0%, #e8dccc 100%);
+  background: linear-gradient(145deg, #ffffff 0%, #f0ebeb 100%);
   border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(139, 115, 85, 0.4);
+  box-shadow: 0 20px 60px rgba(60, 20, 30, 0.4);
 }
 
 .titulo {
   text-align: center;
-  color: #5c4033;
+  color: var(--texto);
   font-size: 2.4rem;
   margin-bottom: 20px;
 }
@@ -69,14 +69,14 @@ const { items, totalArticulos, totalPagar, agregar, quitar, eliminar, vaciar } =
   flex-direction: column;
   align-items: center;
   gap: 14px;
-  color: #8b7355;
+  color: var(--texto-suave);
 }
 
 .btn-principal {
   padding: 10px 24px;
   border-radius: 30px;
   background: linear-gradient(135deg, var(--color-principal), var(--color-principal-oscuro));
-  color: #f5efe8;
+  color: #ffffff;
   font-weight: 600;
   text-decoration: none;
 }
@@ -94,17 +94,17 @@ const { items, totalArticulos, totalPagar, agregar, quitar, eliminar, vaciar } =
   align-items: center;
   gap: 16px;
   padding: 14px 18px;
-  background: rgba(255, 248, 240, 0.9);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 16px;
 }
 
 .info h3 {
-  color: #5c4033;
+  color: var(--texto);
   font-size: 1rem;
 }
 
 .info p {
-  color: #8b7355;
+  color: var(--texto-suave);
   font-size: 0.85rem;
 }
 
@@ -120,18 +120,18 @@ const { items, totalArticulos, totalPagar, agregar, quitar, eliminar, vaciar } =
   border: 2px solid var(--color-principal);
   border-radius: 50%;
   background: none;
-  color: #5c4033;
+  color: var(--texto);
   font-weight: 700;
   cursor: pointer;
 }
 
 .cantidad button:hover {
   background: var(--color-principal);
-  color: #f5efe8;
+  color: #ffffff;
 }
 
 .subtotal {
-  color: #5c4033;
+  color: var(--texto);
   min-width: 90px;
   text-align: right;
 }
@@ -161,8 +161,8 @@ const { items, totalArticulos, totalPagar, agregar, quitar, eliminar, vaciar } =
   gap: 8px;
   margin-top: 22px;
   padding-top: 18px;
-  border-top: 2px solid #d4c5b2;
-  color: #5c4033;
+  border-top: 2px solid #e3dcdc;
+  color: var(--texto);
 }
 
 .total {

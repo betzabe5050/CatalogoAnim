@@ -154,14 +154,14 @@ const enviar = () => {
   max-width: 600px;
   margin: 0 auto;
   padding: 30px;
-  background: linear-gradient(145deg, #f5efe8 0%, #e8dccc 100%);
+  background: linear-gradient(145deg, #ffffff 0%, #f0ebeb 100%);
   border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(139, 115, 85, 0.4);
+  box-shadow: 0 20px 60px rgba(60, 20, 30, 0.4);
 }
 
 .registro-title {
   text-align: center;
-  color: #5c4033;
+  color: var(--texto);
   font-family: 'Dancing Script', cursive;
   font-size: 2.6rem;
   margin-bottom: 5px;
@@ -169,7 +169,7 @@ const enviar = () => {
 
 .nota {
   text-align: center;
-  color: #8b7355;
+  color: var(--texto-suave);
   margin-bottom: 20px;
   font-size: 0.9rem;
 }
@@ -192,19 +192,19 @@ const enviar = () => {
 }
 
 .campo label {
-  color: #5c4033;
+  color: var(--texto);
   font-weight: 600;
 }
 
 .campo input,
 .campo textarea {
   padding: 12px 18px;
-  border: 2px solid #d4c5b2;
+  border: 2px solid #e3dcdc;
   border-radius: 20px;
   font-size: 1rem;
   font-family: 'Quicksand', sans-serif;
-  background: rgba(255, 248, 240, 0.8);
-  color: #5c4033;
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--texto);
 }
 
 .campo input:focus,
@@ -223,7 +223,7 @@ const enviar = () => {
 .btn-registro {
   padding: 12px;
   background: linear-gradient(135deg, var(--color-principal), var(--color-principal-oscuro));
-  color: #f5efe8;
+  color: #ffffff;
   border: none;
   border-radius: 30px;
   font-size: 1.05rem;

@@ -22,20 +22,20 @@ const descripcion = computed(() => String(route.meta.descripcion ?? ''))
   margin: 0 auto;
   padding: 50px 30px;
   text-align: center;
-  background: linear-gradient(145deg, #f5efe8 0%, #e8dccc 100%);
+  background: linear-gradient(145deg, #ffffff 0%, #f0ebeb 100%);
   border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(139, 115, 85, 0.4);
+  box-shadow: 0 20px 60px rgba(60, 20, 30, 0.4);
 }
 
 .pagina-title {
-  color: #5c4033;
+  color: var(--texto);
   font-family: 'Quicksand', sans-serif;
   font-size: 3rem;
   margin-bottom: 15px;
 }
 
 .pagina-texto {
-  color: #8b7355;
+  color: var(--texto-suave);
   margin-bottom: 30px;
 }
 
@@ -43,7 +43,7 @@ const descripcion = computed(() => String(route.meta.descripcion ?? ''))
   display: inline-block;
   padding: 10px 24px;
   background: linear-gradient(135deg, var(--color-principal), var(--color-principal-oscuro));
-  color: #f5efe8;
+  color: #ffffff;
   border-radius: 30px;
   font-weight: 600;
   text-decoration: none;

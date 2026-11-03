@@ -77,12 +77,12 @@ const series = ref<IAnime[]>(animes)
 .hero-title {
   font-family: 'Quicksand', sans-serif;
   font-size: 3rem;
-  color: #5c4033;
+  color: var(--texto);
   margin-bottom: 10px;
 }
 
 .hero-subtitle {
-  color: #8b7355;
+  color: var(--texto-suave);
   font-size: 1.2rem;
 }
 
@@ -93,9 +93,9 @@ const series = ref<IAnime[]>(animes)
   gap: 40px;
   margin-bottom: 60px;
   padding: 40px;
-  background: linear-gradient(145deg, #f5efe8 0%, #e8dccc 100%);
+  background: linear-gradient(145deg, #ffffff 0%, #f0ebeb 100%);
   border-radius: 24px;
-  box-shadow: 0 10px 35px rgba(139, 115, 85, 0.2);
+  box-shadow: 0 10px 35px rgba(60, 20, 30, 0.2);
 }
 
 .about-logo {
@@ -104,10 +104,10 @@ const series = ref<IAnime[]>(animes)
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 248, 240, 0.9);
-  border: 3px solid #d4c5b2;
+  background: rgba(255, 255, 255, 0.9);
+  border: 3px solid #e3dcdc;
   border-radius: 50%;
-  box-shadow: 0 8px 25px rgba(139, 115, 85, 0.15);
+  box-shadow: 0 8px 25px rgba(60, 20, 30, 0.15);
 }
 
 .about-logo img {
@@ -124,7 +124,7 @@ const series = ref<IAnime[]>(animes)
 }
 
 .about-text p {
-  color: #6b5a4a;
+  color: var(--texto-suave);
   font-size: 1.05rem;
   line-height: 1.7;
   margin-bottom: 12px;
@@ -132,7 +132,7 @@ const series = ref<IAnime[]>(animes)
 
 /* 3. Vista previa del catálogo */
 .section-title {
-  color: #5c4033;
+  color: var(--texto);
   font-family: 'Quicksand', sans-serif;
   font-size: 2rem;
   margin-bottom: 20px;
@@ -147,10 +147,10 @@ const series = ref<IAnime[]>(animes)
 }
 
 .series-card {
-  background: rgba(255, 248, 240, 0.9);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(139, 115, 85, 0.15);
+  box-shadow: 0 8px 25px rgba(60, 20, 30, 0.15);
 }
 
 .card-image {
@@ -168,8 +168,8 @@ const series = ref<IAnime[]>(animes)
   position: absolute;
   top: 10px;
   right: 10px;
-  background: rgba(92, 64, 51, 0.9);
-  color: #f5efe8;
+  background: rgba(36, 22, 24, 0.9);
+  color: #ffffff;
   padding: 5px 15px;
   border-radius: 30px;
   font-size: 0.8rem;
@@ -180,14 +180,14 @@ const series = ref<IAnime[]>(animes)
 }
 
 .card-content h3 {
-  color: #5c4033;
+  color: var(--texto);
   font-family: 'Quicksand', sans-serif;
   font-size: 1.4rem;
   margin-bottom: 5px;
 }
 
 .creator {
-  color: #8b7355;
+  color: var(--texto-suave);
   font-size: 0.95rem;
 }
 
@@ -200,7 +200,7 @@ const series = ref<IAnime[]>(animes)
   display: inline-block;
   padding: 12px 30px;
   background: linear-gradient(135deg, var(--color-principal), var(--color-principal-oscuro));
-  color: #f5efe8;
+  color: #ffffff;
   text-decoration: none;
   border-radius: 30px;
   font-weight: 600;

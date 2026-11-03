@@ -182,24 +182,31 @@ const opcionesCalendario = computed(() => ({
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  color: #5c4033;
+  color: var(--texto);
 }
 
 .titulo { text-align: center; font-size: clamp(2rem, 6vw, 3rem); margin: 0; }
 .subtitulo { text-align: center; opacity: 0.8; }
 
-.filtros { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 20px 0; }
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 20px 0;
+}
 
 .categoria-activa {
   padding: 8px 22px;
   border-radius: 30px;
   background: var(--color-principal);
-  color: #f5efe8;
+  color: #ffffff;
   font-weight: 600;
 }
 
 .ver-todos {
-  color: #5c4033;
+  color: var(--texto);
   font-weight: 600;
   text-decoration: underline;
 }
@@ -213,30 +220,30 @@ const opcionesCalendario = computed(() => ({
 }
 
 .calendario {
-  background: #fdf6ee;
+  background: #ffffff;
   border-radius: 20px;
   padding: 16px;
-  box-shadow: 0 8px 25px rgba(139, 115, 85, 0.2);
+  box-shadow: 0 8px 25px rgba(60, 20, 30, 0.2);
 
   /* Colores de los botones del calendario */
   --fc-button-bg-color: var(--color-principal);
   --fc-button-border-color: var(--color-principal);
-  --fc-button-hover-bg-color: #5c4033;
-  --fc-button-hover-border-color: #5c4033;
-  --fc-button-active-bg-color: #5c4033;
-  --fc-button-active-border-color: #5c4033;
+  --fc-button-hover-bg-color: var(--texto);
+  --fc-button-hover-border-color: var(--texto);
+  --fc-button-active-bg-color: var(--texto);
+  --fc-button-active-border-color: var(--texto);
 
   /* Los eventos se ven como marcador, sin barra de color */
   --fc-event-bg-color: transparent;
   --fc-event-border-color: transparent;
-  --fc-event-text-color: #5c4033;
+  --fc-event-text-color: var(--texto);
 }
 
 .detalle {
   margin-bottom: 16px;
   padding: 20px;
   border-radius: 20px;
-  background: #fdf6ee;
+  background: #ffffff;
   border: 2px solid var(--color-principal);
 }
 .detalle h2 { margin-top: 0; }
@@ -258,7 +265,7 @@ const opcionesCalendario = computed(() => ({
   gap: 12px;
   padding: 12px 16px;
   border-radius: 16px;
-  background: #fdf6ee;
+  background: #ffffff;
   border: 2px solid transparent;
   cursor: pointer;
 }
@@ -301,34 +308,13 @@ const opcionesCalendario = computed(() => ({
   border: none;
   border-radius: 30px;
   background: var(--color-principal);
-  color: #f5efe8;
+  color: #ffffff;
   font-family: inherit;
   font-weight: 600;
   cursor: pointer;
 }
 
-
-.eventos { color: var(--color-crema); }
-
-.categoria-activa {
-  background: var(--color-crema);
-  color: var(--color-principal);
-}
-
-.ver-todos { color: var(--color-crema); }
-
-.btn-link {
-  background: var(--color-crema);
-  color: var(--color-principal);
-}
-
-
-.calendario,
-.detalle,
-.lista-item { color: #5c4033; }
-
-
-
+/* En pantallas pequeñas la lista baja debajo del calendario */
 @media (max-width: 900px) {
   .contenido { grid-template-columns: 1fr; }
 }

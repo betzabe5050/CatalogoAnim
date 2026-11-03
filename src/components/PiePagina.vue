@@ -58,10 +58,10 @@ const anio = new Date().getFullYear()
   margin: 40px auto 20px;
   padding: 24px 30px 16px;
   width: 100%;
-  background: linear-gradient(145deg, var(--color-principal-claro) 0%, var(--color-principal) 45%, var(--color-principal-profundo) 100%);
+  background: var(--color-principal);
   border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(139, 115, 85, 0.25);
-  color: #5c4033;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  color: #ffffff;
 }
 
 .footer-contenido {
@@ -83,9 +83,13 @@ const anio = new Date().getFullYear()
   font-weight: 600;
 }
 
+/* El logo va en un recuadro blanco para que se vea sobre el rojo */
 .footer-logo {
-  height: 40px;
+  height: 48px;
   width: auto;
+  padding: 4px 8px;
+  border-radius: 12px;
+  background: #ffffff;
 }
 
 .footer-enlaces {
@@ -95,13 +99,13 @@ const anio = new Date().getFullYear()
 }
 
 .footer-enlaces a {
-  color: #5c4033;
+  color: #ffffff;
   font-weight: 600;
   text-decoration: none;
 }
 
 .footer-enlaces a:hover {
-  color: var(--color-principal);
+  text-decoration: underline;
 }
 
 .footer-redes {
@@ -116,13 +120,14 @@ const anio = new Date().getFullYear()
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--color-principal);
-  color: #f5efe8;
+  background: #ffffff;
+  color: var(--color-principal);
   transition: all 0.3s;
 }
 
 .footer-redes a:hover {
-  background: #5c4033;
+  background: var(--texto);
+  color: #ffffff;
   transform: scale(1.08);
 }
 
@@ -130,35 +135,7 @@ const anio = new Date().getFullYear()
   margin: 18px 0 0;
   text-align: center;
   font-size: 0.85rem;
-  opacity: 0.8;
-}
-
-.footer {
-  background: linear-gradient(145deg, var(--color-principal) 0%, var(--color-principal-oscuro) 100%);
-  color: var(--color-crema);
-  box-shadow: 0 8px 25px rgba(60, 0, 10, 0.4);
-}
-
-.footer-logo {
-  height: 48px;
-  padding: 4px 8px;
-  border-radius: 12px;
-  background: var(--color-crema);
-}
-
-.footer-enlaces a { color: var(--color-crema); }
-.footer-enlaces a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
-.footer-redes a {
-  background: var(--color-crema);
-  color: var(--color-principal);
-}
-.footer-redes a:hover {
-  background: var(--color-vino);
-  color: var(--color-crema);
+  opacity: 0.9;
 }
 
 @media (max-width: 700px) {

@@ -36,16 +36,16 @@ const emit = defineEmits<{
 .tarjeta {
   display: flex;
   flex-direction: column;
-  background: rgba(255, 248, 240, 0.9);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(139, 115, 85, 0.15);
+  box-shadow: 0 8px 25px rgba(60, 20, 30, 0.15);
 }
 
 .imagen {
   position: relative;
   height: 180px;
-  background: #e8dccc;
+  background: #f0ebeb;
 }
 
 .imagen img {
@@ -59,7 +59,7 @@ const emit = defineEmits<{
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: #8b7355;
+  color: var(--texto-suave);
   font-weight: 700;
   font-size: 1.2rem;
 }
@@ -70,8 +70,8 @@ const emit = defineEmits<{
   right: 10px;
   padding: 4px 14px;
   border-radius: 30px;
-  background: rgba(92, 64, 51, 0.9);
-  color: #f5efe8;
+  background: rgba(36, 22, 24, 0.9);
+  color: #ffffff;
   font-size: 0.8rem;
   font-weight: 600;
 }
@@ -85,17 +85,17 @@ const emit = defineEmits<{
 }
 
 h3 {
-  color: #5c4033;
+  color: var(--texto);
   font-size: 1.1rem;
 }
 
 .serie {
-  color: #8b7355;
+  color: var(--texto-suave);
   font-size: 0.85rem;
 }
 
 .descripcion {
-  color: #6b5a4a;
+  color: var(--texto-suave);
   font-size: 0.9rem;
   flex: 1;
 }
@@ -109,7 +109,7 @@ h3 {
 }
 
 .precio {
-  color: #5c4033;
+  color: var(--texto);
   font-weight: 700;
   font-size: 1.1rem;
 }
@@ -119,7 +119,7 @@ h3 {
   border: none;
   border-radius: 30px;
   background: linear-gradient(135deg, var(--color-principal), var(--color-principal-oscuro));
-  color: #f5efe8;
+  color: #ffffff;
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   cursor: pointer;

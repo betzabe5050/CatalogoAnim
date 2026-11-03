@@ -71,20 +71,20 @@ const alAgregar = (producto: IProducto) => {
   max-width: 1400px;
   margin: 0 auto;
   padding: 30px;
-  background: linear-gradient(145deg, #f5efe8 0%, #e8dccc 100%);
+  background: linear-gradient(145deg, #ffffff 0%, #f0ebeb 100%);
   border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(139, 115, 85, 0.4);
+  box-shadow: 0 20px 60px rgba(60, 20, 30, 0.4);
 }
 
 .titulo {
   text-align: center;
-  color: #5c4033;
+  color: var(--texto);
   font-size: 2.4rem;
 }
 
 .subtitulo {
   text-align: center;
-  color: #8b7355;
+  color: var(--texto-suave);
   margin-bottom: 20px;
 }
 
@@ -101,12 +101,12 @@ const alAgregar = (producto: IProducto) => {
   padding: 8px 22px;
   border-radius: 30px;
   background: var(--color-principal);
-  color: #f5efe8;
+  color: #ffffff;
   font-weight: 600;
 }
 
 .ver-todos {
-  color: #5c4033;
+  color: var(--texto);
   font-weight: 600;
   text-decoration: underline;
 }
@@ -124,10 +124,10 @@ const alAgregar = (producto: IProducto) => {
   transform: translateX(-50%);
   padding: 12px 24px;
   border-radius: 30px;
-  background: #5c4033;
-  color: #f5efe8;
+  background: var(--texto);
+  color: #ffffff;
   font-weight: 600;
-  box-shadow: 0 10px 30px rgba(92, 64, 51, 0.4);
+  box-shadow: 0 10px 30px rgba(36, 22, 24, 0.4);
   z-index: 200;
 }
 

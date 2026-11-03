@@ -156,7 +156,7 @@ onUnmounted(() => window.removeEventListener('keydown', alPresionarTecla))
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: rgba(92, 64, 51, 0.65);
+  background: rgba(36, 22, 24, 0.65);
   backdrop-filter: blur(6px);
 }
 
@@ -164,9 +164,9 @@ onUnmounted(() => window.removeEventListener('keydown', alPresionarTecla))
   width: 100%;
   max-width: 400px;
   padding: 26px 28px;
-  background: linear-gradient(145deg, #f5efe8 0%, #e8dccc 100%);
+  background: linear-gradient(145deg, #ffffff 0%, #f0ebeb 100%);
   border-radius: 20px;
-  box-shadow: 0 30px 80px rgba(92, 64, 51, 0.5);
+  box-shadow: 0 30px 80px rgba(36, 22, 24, 0.5);
 }
 
 .modal-header {
@@ -177,7 +177,7 @@ onUnmounted(() => window.removeEventListener('keydown', alPresionarTecla))
 }
 
 .modal-title {
-  color: #5c4033;
+  color: var(--texto);
   font-size: 1.4rem;
   font-weight: 700;
 }
@@ -185,14 +185,14 @@ onUnmounted(() => window.removeEventListener('keydown', alPresionarTecla))
 .btn-cerrar {
   background: none;
   border: none;
-  color: #8b7355;
+  color: var(--texto-suave);
   font-size: 1.3rem;
   cursor: pointer;
   transition: all 0.3s;
 }
 
 .btn-cerrar:hover {
-  color: #5c4033;
+  color: var(--texto);
   transform: rotate(90deg);
 }
 
@@ -204,7 +204,7 @@ onUnmounted(() => window.removeEventListener('keydown', alPresionarTecla))
 }
 
 .subtitulo {
-  color: #8b7355;
+  color: var(--texto-suave);
 }
 
 .btn-opcion {
@@ -213,9 +213,9 @@ onUnmounted(() => window.removeEventListener('keydown', alPresionarTecla))
   justify-content: center;
   gap: 10px;
   padding: 12px;
-  background: rgba(255, 248, 240, 0.9);
-  color: #5c4033;
-  border: 2px solid #d4c5b2;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--texto);
+  border: 2px solid #e3dcdc;
   border-radius: 12px;
   font-size: 1rem;
   font-weight: 600;
@@ -230,7 +230,7 @@ onUnmounted(() => window.removeEventListener('keydown', alPresionarTecla))
 
 .btn-principal {
   background: linear-gradient(135deg, var(--color-principal), var(--color-principal-oscuro));
-  color: #f5efe8;
+  color: #ffffff;
   border-color: transparent;
 }
 
@@ -245,14 +245,14 @@ onUnmounted(() => window.removeEventListener('keydown', alPresionarTecla))
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  background: #5c4033;
-  color: #f5efe8;
+  background: var(--texto);
+  color: #ffffff;
   font-size: 0.8rem;
   font-weight: 700;
 }
 
 .aviso {
-  color: #8b7355;
+  color: var(--texto-suave);
   font-size: 0.9rem;
 }
 
@@ -260,7 +260,7 @@ onUnmounted(() => window.removeEventListener('keydown', alPresionarTecla))
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #8b7355;
+  color: var(--texto-suave);
 }
 
 .separador::before,
@@ -268,12 +268,12 @@ onUnmounted(() => window.removeEventListener('keydown', alPresionarTecla))
   content: '';
   flex: 1;
   height: 1px;
-  background: #d4c5b2;
+  background: #e3dcdc;
 }
 
 .registro-link {
   text-align: center;
-  color: #6b5a4a;
+  color: var(--texto-suave);
   font-size: 0.95rem;
 }
 
@@ -284,20 +284,20 @@ onUnmounted(() => window.removeEventListener('keydown', alPresionarTecla))
 }
 
 .registro-link a:hover {
-  color: #5c4033;
+  color: var(--texto);
 }
 
 .btn-regresar {
   background: none;
   border: none;
-  color: #8b7355;
+  color: var(--texto-suave);
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   cursor: pointer;
 }
 
 .btn-regresar:hover {
-  color: #5c4033;
+  color: var(--texto);
 }
 
 .campo {
@@ -307,19 +307,19 @@ onUnmounted(() => window.removeEventListener('keydown', alPresionarTecla))
 }
 
 .campo label {
-  color: #5c4033;
+  color: var(--texto);
   font-weight: 600;
   font-size: 0.95rem;
 }
 
 .campo input {
   padding: 12px 14px;
-  border: 2px solid #d4c5b2;
+  border: 2px solid #e3dcdc;
   border-radius: 12px;
   font-size: 1rem;
   font-family: 'Quicksand', sans-serif;
-  background: rgba(255, 248, 240, 0.8);
-  color: #5c4033;
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--texto);
 }
 
 .campo input:focus {

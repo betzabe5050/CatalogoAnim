@@ -111,29 +111,29 @@ const reiniciar = () => {
   max-width: 700px;
   margin: 0 auto;
   padding: 30px;
-  background: linear-gradient(145deg, #f5efe8 0%, #e8dccc 100%);
+  background: linear-gradient(145deg, #ffffff 0%, #f0ebeb 100%);
   border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(139, 115, 85, 0.4);
+  box-shadow: 0 20px 60px rgba(60, 20, 30, 0.4);
 }
 
 .ayuda-title {
   text-align: center;
-  color: #5c4033;
+  color: var(--texto);
   font-family: 'Quicksand', sans-serif;
   font-size: 2.8rem;
 }
 
 .ayuda-sub {
   text-align: center;
-  color: #8b7355;
+  color: var(--texto-suave);
   margin-bottom: 20px;
 }
 
 .chat {
   display: flex;
   flex-direction: column;
-  background: rgba(255, 248, 240, 0.9);
-  border: 2px solid #d4c5b2;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid #e3dcdc;
   border-radius: 20px;
   overflow: hidden;
 }
@@ -170,36 +170,36 @@ const reiniciar = () => {
 }
 
 .asistente .burbuja {
-  background: #e8dccc;
-  color: #5c4033;
+  background: #f0ebeb;
+  color: var(--texto);
   border-bottom-left-radius: 4px;
 }
 
 .usuario .burbuja {
   background: linear-gradient(135deg, var(--color-principal), var(--color-principal-oscuro));
-  color: #f5efe8;
+  color: #ffffff;
   border-bottom-right-radius: 4px;
 }
 
 .escribiendo {
   font-style: italic;
-  color: #8b7355;
+  color: var(--texto-suave);
 }
 
 .hora {
   margin-top: 3px;
-  color: #8b7355;
+  color: var(--texto-suave);
   font-size: 0.7rem;
 }
 
 .chat-opciones {
   padding: 16px 18px;
   background: rgba(232, 220, 204, 0.6);
-  border-top: 2px solid #d4c5b2;
+  border-top: 2px solid #e3dcdc;
 }
 
 .opciones-titulo {
-  color: #5c4033;
+  color: var(--texto);
   font-weight: 700;
   font-size: 0.9rem;
   margin-bottom: 10px;
@@ -213,8 +213,8 @@ const reiniciar = () => {
 
 .btn-pregunta {
   padding: 8px 16px;
-  background: rgba(255, 248, 240, 0.95);
-  color: #5c4033;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--texto);
   border: 2px solid var(--color-principal);
   border-radius: 30px;
   font-family: 'Quicksand', sans-serif;
@@ -226,7 +226,7 @@ const reiniciar = () => {
 
 .btn-pregunta:hover:not(:disabled) {
   background: var(--color-principal);
-  color: #f5efe8;
+  color: #ffffff;
 }
 
 .btn-pregunta:disabled {
@@ -238,13 +238,13 @@ const reiniciar = () => {
   margin-top: 12px;
   background: none;
   border: none;
-  color: #8b7355;
+  color: var(--texto-suave);
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   cursor: pointer;
 }
 
 .btn-reiniciar:hover {
-  color: #5c4033;
+  color: var(--texto);
 }
 </style>

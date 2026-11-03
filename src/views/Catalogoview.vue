@@ -186,10 +186,10 @@ const closeDetails = () => {
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap');
 
 .catalog-container {
-  background: linear-gradient(145deg, #f5efe8 0%, #e8dccc 100%);
+  background: linear-gradient(145deg, #ffffff 0%, #f0ebeb 100%);
   border-radius: 20px;
   padding: 30px;
-  box-shadow: 0 20px 60px rgba(139, 115, 85, 0.4);
+  box-shadow: 0 20px 60px rgba(60, 20, 30, 0.4);
   max-width: 1400px;
   margin: 0 auto;
   font-family: 'Quicksand', sans-serif;
@@ -197,7 +197,7 @@ const closeDetails = () => {
 
 .main-title {
   text-align: center;
-  color: #5c4033;
+  color: var(--texto);
   font-family: 'Quicksand',  sans-serif;
   font-weight: 500;
   font-size: 3rem;
@@ -219,13 +219,13 @@ const closeDetails = () => {
   flex: 1;
   min-width: 250px;
   padding: 12px 20px;
-  border: 2px solid #d4c5b2;
+  border: 2px solid #e3dcdc;
   border-radius: 30px;
   font-size: 1rem;
   font-family: 'Quicksand', sans-serif;
-  background: rgba(255, 248, 240, 0.8);
+  background: rgba(255, 255, 255, 0.8);
   transition: all 0.3s;
-  color: #5c4033;
+  color: var(--texto);
 }
 
 .search-input:focus {
@@ -236,13 +236,13 @@ const closeDetails = () => {
 
 .filter-select {
   padding: 12px 20px;
-  border: 2px solid #d4c5b2;
+  border: 2px solid #e3dcdc;
   border-radius: 30px;
   font-size: 1rem;
   font-family: 'Quicksand', sans-serif;
-  background: rgba(255, 248, 240, 0.8);
+  background: rgba(255, 255, 255, 0.8);
   cursor: pointer;
-  color: #5c4033;
+  color: var(--texto);
   transition: all 0.3s;
 }
 
@@ -252,7 +252,7 @@ const closeDetails = () => {
 }
 
 .section-title {
-  color: #5c4033;
+  color: var(--texto);
   font-family: 'Quicksand',  sans-serif;
   font-size: 2.5rem;
   margin: 40px 0 20px 0;
@@ -269,17 +269,17 @@ const closeDetails = () => {
 }
 
 .series-card {
-  background: rgba(255, 248, 240, 0.9);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(139, 115, 85, 0.15);
+  box-shadow: 0 8px 25px rgba(60, 20, 30, 0.15);
   transition: transform 0.3s, box-shadow 0.3s;
   backdrop-filter: blur(10px);
 }
 
 .series-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 40px rgba(139, 115, 85, 0.25);
+  box-shadow: 0 15px 40px rgba(60, 20, 30, 0.25);
 }
 
 .card-image {
@@ -298,8 +298,8 @@ const closeDetails = () => {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: rgba(92, 64, 51, 0.9);
-  color: #f5efe8;
+  background: rgba(36, 22, 24, 0.9);
+  color: #ffffff;
   padding: 5px 15px;
   border-radius: 30px;
   font-size: 0.8rem;
@@ -312,14 +312,14 @@ const closeDetails = () => {
 }
 
 .card-content h3 {
-  color: #5c4033;
+  color: var(--texto);
   font-family: 'Dancing Script', cursive;
   font-size: 1.8rem;
   margin-bottom: 5px;
 }
 
 .creator, .year {
-  color: #8b7355;
+  color: var(--texto-suave);
   margin: 5px 0;
   font-weight: 400;
   font-size: 0.95rem;
@@ -330,7 +330,7 @@ const closeDetails = () => {
 }
 
 .features h4 {
-  color: #5c4033;
+  color: var(--texto);
   margin-bottom: 8px;
   font-weight: 600;
 }
@@ -342,7 +342,7 @@ const closeDetails = () => {
 
 .features ul li {
   padding: 4px 0;
-  color: #6b5a4a;
+  color: var(--texto-suave);
   font-size: 0.9rem;
 }
 
@@ -356,7 +356,7 @@ const closeDetails = () => {
 }
 
 .characters h4 {
-  color: #5c4033;
+  color: var(--texto);
   margin-bottom: 8px;
   font-weight: 600;
 }
@@ -372,7 +372,7 @@ const closeDetails = () => {
   flex-direction: column;
   align-items: center;
   font-size: 0.8rem;
-  color: #6b5a4a;
+  color: var(--texto-suave);
 }
 
 .character-avatar {
@@ -380,7 +380,7 @@ const closeDetails = () => {
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #d4c5b2;
+  border: 3px solid #e3dcdc;
   transition: transform 0.3s;
 }
 
@@ -392,7 +392,7 @@ const closeDetails = () => {
   width: 100%;
   padding: 10px;
   background: linear-gradient(135deg, var(--color-principal), var(--color-principal-oscuro));
-  color: #f5efe8;
+  color: #ffffff;
   border: none;
   border-radius: 30px;
   font-size: 1rem;
@@ -411,7 +411,7 @@ const closeDetails = () => {
 .influencers-section {
   margin-top: 50px;
   padding-top: 30px;
-  border-top: 2px solid #d4c5b2;
+  border-top: 2px solid #e3dcdc;
 }
 
 .influencers-grid {
@@ -423,10 +423,10 @@ const closeDetails = () => {
 }
 
 .influencer-card {
-  background: rgba(255, 248, 240, 0.9);
+  background: rgba(255, 255, 255, 0.9);
   padding: 30px;
   border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(139, 115, 85, 0.1);
+  box-shadow: 0 4px 20px rgba(60, 20, 30, 0.1);
   transition: all 0.3s ease;
   max-width: 450px;
   width: 100%;
@@ -463,21 +463,21 @@ const closeDetails = () => {
 }
 
 .influencer-info h3 {
-  color: #5c4033;
+  color: var(--texto);
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 1.2rem;
   margin: 0;
 }
 .influencer-role {
-  color: #8b7355;
+  color: var(--texto-suave);
   font-size: 0.85rem;
   font-weight: 400;
   margin: 4px 0 0 0;
 }
 
 .opinion {
-  color: #6b5a4a;
+  color: var(--texto-suave);
   font-style: italic;
   margin: 10px 0 15px 0;
   font-size: 0.95rem;
@@ -501,7 +501,7 @@ const closeDetails = () => {
   background: rgba(196, 32, 55, 0.1);
 }
 .social-link:hover {
-  color: #5c4033;
+  color: var(--texto);
   background: rgba(196, 32, 55, 0.2);
   transform: translateX(4px);
 }
@@ -515,7 +515,7 @@ const closeDetails = () => {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(92, 64, 51, 0.8);
+  background: rgba(36, 22, 24, 0.8);
   backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
@@ -525,7 +525,7 @@ const closeDetails = () => {
 }
 
 .modal-content {
-  background: linear-gradient(145deg, #f5efe8, #e8dccc);
+  background: linear-gradient(145deg, #ffffff, #f0ebeb);
   border-radius: 30px;
   max-width: 800px;
   width: 100%;
@@ -533,7 +533,7 @@ const closeDetails = () => {
   overflow-y: auto;
   padding: 30px;
   position: relative;
-  box-shadow: 0 30px 80px rgba(92, 64, 51, 0.5);
+  box-shadow: 0 30px 80px rgba(36, 22, 24, 0.5);
 }
 
 .modal-close {
@@ -552,7 +552,7 @@ const closeDetails = () => {
 }
 
 .modal-close:hover {
-  background: #5c4033;
+  background: var(--texto);
   transform: rotate(90deg);
 }
 
@@ -568,7 +568,7 @@ const closeDetails = () => {
   max-width: 300px;
   border-radius: 15px;
   object-fit: cover;
-  box-shadow: 0 8px 25px rgba(139, 115, 85, 0.2);
+  box-shadow: 0 8px 25px rgba(60, 20, 30, 0.2);
 }
 
 .modal-info {
@@ -577,13 +577,13 @@ const closeDetails = () => {
 
 .modal-info h4 {
   margin-top: 15px;
-  color: #5c4033;
+  color: var(--texto);
   font-weight: 600;
 }
 
 .modal-info ul {
   margin-left: 20px;
-  color: #6b5a4a;
+  color: var(--texto-suave);
 }
 
 .modal-platforms {
@@ -593,7 +593,7 @@ const closeDetails = () => {
 }
 
 .modal-platforms h4 {
-  color: #5c4033;
+  color: var(--texto);
   font-size: 0.95rem;
   font-weight: 600;
   margin-bottom: 10px;
@@ -611,9 +611,9 @@ const closeDetails = () => {
   align-items: center;
   gap: 12px;
   padding: 10px 16px;
-  background: rgba(255, 248, 240, 0.6);
+  background: rgba(255, 255, 255, 0.6);
   border-radius: 12px;
-  color: #5c4033;
+  color: var(--texto);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
@@ -622,7 +622,7 @@ const closeDetails = () => {
 }
 
 .modal-platforms .platform-link:hover {
-  background: rgba(255, 248, 240, 0.9);
+  background: rgba(255, 255, 255, 0.9);
   border-color: var(--color-principal);
   transform: translateX(5px);
   box-shadow: 0 2px 10px rgba(196, 32, 55, 0.15);
@@ -637,7 +637,7 @@ const closeDetails = () => {
 .modal-platforms .platform-badge {
   margin-left: auto;
   font-size: 0.7rem;
-  color: #8b7355;
+  color: var(--texto-suave);
   background: rgba(196, 32, 55, 0.1);
   padding: 2px 12px;
   border-radius: 20px;
