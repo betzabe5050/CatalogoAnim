@@ -15,15 +15,7 @@ const router = createRouter({
     { path: '/tienda', name: 'tienda', component: TiendaView },
     { path: '/carrito', name: 'carrito', component: CarritoView },
     { path: '/registro', name: 'registro', component: RegistroView },
-    {
-      path: '/multimedia',
-      name: 'multimedia',
-      component: EnConstruccionView,
-      meta: {
-        titulo: 'Multimedia',
-        descripcion: 'Aquí irán los videos de productos.'
-      }
-    },
+    
     {
       path: '/eventos',
       name: 'eventos',

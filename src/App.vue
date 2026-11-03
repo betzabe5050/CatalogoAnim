@@ -3,12 +3,14 @@
     <NavBar />
     <RouterView />
     <LoginModal />
+    <PiePagina />
   </div>
 </template>
 
 <script setup lang="ts">
 import NavBar from './components/NavBar.vue'
 import LoginModal from './components/LoginModal.vue'
+import PiePagina from './components/PiePagina.vue'
 </script>
 
 <style>
