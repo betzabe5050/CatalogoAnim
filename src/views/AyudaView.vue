@@ -176,7 +176,7 @@ const reiniciar = () => {
 }
 
 .usuario .burbuja {
-  background: linear-gradient(135deg, #b8957a, #a8846b);
+  background: linear-gradient(135deg, var(--color-principal), var(--color-principal-oscuro));
   color: #f5efe8;
   border-bottom-right-radius: 4px;
 }
@@ -215,7 +215,7 @@ const reiniciar = () => {
   padding: 8px 16px;
   background: rgba(255, 248, 240, 0.95);
   color: #5c4033;
-  border: 2px solid #b8957a;
+  border: 2px solid var(--color-principal);
   border-radius: 30px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
@@ -225,7 +225,7 @@ const reiniciar = () => {
 }
 
 .btn-pregunta:hover:not(:disabled) {
-  background: #b8957a;
+  background: var(--color-principal);
   color: #f5efe8;
 }
 

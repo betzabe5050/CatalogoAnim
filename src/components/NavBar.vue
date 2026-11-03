@@ -1,5 +1,5 @@
 <template>
- <nav class="navbar">
+  <nav class="navbar">
     <RouterLink to="/" class="nav-logo">
       <img src="/Logo.png" alt="Logo de Kiseki" class="nav-logo-img" />
       <span>Kiseki</span>
@@ -18,27 +18,39 @@
     </button>
 
     <div class="nav-links" :class="{ abierto: menuAbierto }" @click="menuAbierto = false">
-      <RouterLink
+      <div
         v-for="item in menu"
         :key="item.ruta"
-        :to="item.ruta"
-        class="nav-link"
+        class="nav-item"
       >
-        {{ item.etiqueta }}
+        <RouterLink
+          :to="item.ruta"
+          class="nav-link"
+          :class="{ 'nav-link-activo': esActivo(item.ruta) }"
+        >
+          {{ item.etiqueta }}
+          <span v-if="item.submenu" class="flecha">▾</span>
+        </RouterLink>
+
+        <ul v-if="item.submenu" class="submenu">
+          <li v-for="sub in item.submenu" :key="sub.ruta">
+            <RouterLink :to="sub.ruta" class="submenu-link">
+              {{ sub.etiqueta }}
+            </RouterLink>
+          </li>
+        </ul>
+      </div>
+
+      <RouterLink to="/carrito" class="nav-icon nav-cart" title="Carrito">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round"
+             stroke-linejoin="round" aria-hidden="true">
+          <circle cx="9" cy="20" r="1.5" />
+          <circle cx="18" cy="20" r="1.5" />
+          <path d="M2 3h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6" />
+        </svg>
+        <span v-if="totalArticulos > 0" class="cart-badge">{{ totalArticulos }}</span>
       </RouterLink>
-
-
-<RouterLink to="/carrito" class="nav-icon nav-cart" title="Carrito">
-  <svg viewBox="0 0 24 24" width="24" height="24" fill="none"
-       stroke="currentColor" stroke-width="2" stroke-linecap="round"
-       stroke-linejoin="round" aria-hidden="true">
-    <circle cx="9" cy="20" r="1.5" />
-    <circle cx="18" cy="20" r="1.5" />
-    <path d="M2 3h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6" />
-  </svg>
-  <span v-if="totalArticulos > 0" class="cart-badge">{{ totalArticulos }}</span>
-</RouterLink>
-
 
       <template v-if="estaLogueado">
         <span class="nav-usuario">Hola, {{ usuarioActual?.nombre }}</span>
@@ -67,18 +79,22 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { menu } from '../data/menu'
 import { useSesion } from '../composables/useSesion'
 import { useLoginModal } from '../composables/useLoginModal'
 import { useCarrito } from '../composables/useCarrito'
 
-
 const menuAbierto = ref(false)
 const router = useRouter()
+const route = useRoute()
 const { usuarioActual, estaLogueado, cerrarSesion } = useSesion()
 const { abrirLogin } = useLoginModal()
 const { totalArticulos } = useCarrito()
+
+
+const esActivo = (ruta: string) =>
+  route.path === ruta || route.path.startsWith(ruta + '/')
 
 const salir = () => {
   cerrarSesion()
@@ -96,7 +112,7 @@ const salir = () => {
   width: 100%;
   margin: 0 auto 20px auto;
   padding: 14px 30px;
-  background: linear-gradient(145deg, #f5efe8, #e8dccc);
+  background: linear-gradient(145deg, var(--color-principal-claro) 0%, var(--color-principal) 45%, var(--color-principal-profundo) 100%);
   border-radius: 20px;
   box-shadow: 0 8px 25px rgba(139, 115, 85, 0.25);
   position: sticky;
@@ -127,7 +143,12 @@ const salir = () => {
   gap: 8px;
 }
 
+.nav-item {
+  position: relative;
+}
+
 .nav-link {
+  display: inline-block;
   padding: 8px 16px;
   border-radius: 30px;
   color: #5c4033;
@@ -137,11 +158,57 @@ const salir = () => {
 }
 
 .nav-link:hover {
-  background: rgba(184, 149, 122, 0.2);
+  background: rgba(196, 32, 55, 0.2);
 }
 
-.nav-link.router-link-exact-active {
-  background: #b8957a;
+.nav-link.router-link-exact-active,
+.nav-link.nav-link-activo {
+  background: var(--color-principal);
+  color: #f5efe8;
+}
+
+.flecha {
+  font-size: 0.75rem;
+  margin-left: 2px;
+}
+
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 170px;
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+  background: #f5efe8;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(139, 115, 85, 0.25);
+  z-index: 200;
+}
+
+.nav-item:hover .submenu,
+.nav-item:focus-within .submenu {
+  display: block;
+}
+
+.submenu-link {
+  display: block;
+  padding: 8px 14px;
+  border-radius: 12px;
+  color: #5c4033;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.submenu-link:hover {
+  background: rgba(196, 32, 55, 0.2);
+}
+
+.submenu-link.router-link-exact-active {
+  background: var(--color-principal);
   color: #f5efe8;
 }
 
@@ -154,7 +221,7 @@ const salir = () => {
 .nav-salir {
   padding: 8px 16px;
   background: none;
-  border: 2px solid #b8957a;
+  border: 2px solid var(--color-principal);
   border-radius: 30px;
   color: #5c4033;
   font-family: 'Quicksand', sans-serif;
@@ -164,7 +231,7 @@ const salir = () => {
 }
 
 .nav-salir:hover {
-  background: #b8957a;
+  background: var(--color-principal);
   color: #f5efe8;
 }
 
@@ -177,7 +244,7 @@ const salir = () => {
   margin-left: 8px;
   border: none;
   border-radius: 50%;
-  background: #b8957a;
+  background: var(--color-principal);
   color: #f5efe8;
   cursor: pointer;
   transition: all 0.3s;
@@ -187,6 +254,7 @@ const salir = () => {
   background: #5c4033;
   transform: scale(1.08);
 }
+
 .nav-cart {
   position: relative;
   text-decoration: none;
@@ -203,11 +271,13 @@ const salir = () => {
   height: 20px;
   padding: 0 5px;
   border-radius: 10px;
-  background: #b3392f;
+  background: #5c4033;
   color: #fff;
   font-size: 0.75rem;
   font-weight: 700;
 }
+
+
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -218,7 +288,7 @@ const salir = () => {
   padding: 0 11px;
   border: none;
   border-radius: 50%;
-  background: #b8957a;
+  background: var(--color-principal);
   cursor: pointer;
 }
 
@@ -229,6 +299,58 @@ const salir = () => {
   background: #f5efe8;
 }
 
+/* ===== Menú en degradado rojo ===== */
+.navbar {
+  background: linear-gradient(145deg, var(--color-principal) 0%, var(--color-principal-oscuro) 100%);
+  box-shadow: 0 8px 25px rgba(60, 0, 10, 0.4);
+}
+
+.nav-logo { color: var(--color-crema); }
+
+/* El logo va en un recuadro crema para que se vea sobre el rojo */
+.nav-logo-img {
+  height: 48px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  background: var(--color-crema);
+}
+
+.nav-link { color: var(--color-crema); }
+.nav-link:hover { background: rgba(255, 245, 238, 0.2); }
+
+.nav-link.router-link-exact-active,
+.nav-link.nav-link-activo {
+  background: var(--color-crema);
+  color: var(--color-principal);
+}
+
+.nav-usuario { color: var(--color-crema); }
+
+.nav-salir {
+  border-color: var(--color-crema);
+  color: var(--color-crema);
+}
+.nav-salir:hover {
+  background: var(--color-crema);
+  color: var(--color-principal);
+}
+
+.nav-icon {
+  background: var(--color-crema);
+  color: var(--color-principal);
+}
+.nav-icon:hover {
+  background: var(--color-vino);
+  color: var(--color-crema);
+}
+
+.cart-badge {
+  background: var(--color-vino);
+  color: var(--color-crema);
+}
+
+.nav-toggle { background: var(--color-crema); }
+.nav-toggle span { background: var(--color-principal); }
 @media (max-width: 900px) {
   .navbar {
     padding: 12px 18px;
@@ -251,7 +373,34 @@ const salir = () => {
     display: flex;
   }
 
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   .nav-link {
+    display: block;
+    text-align: center;
+  }
+
+  .flecha {
+    display: none;
+  }
+
+ 
+  .nav-item .submenu,
+  .nav-item:hover .submenu,
+  .nav-item:focus-within .submenu {
+    display: flex;
+    flex-direction: column;
+    position: static;
+    padding: 0 0 0 16px;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .submenu-link {
     text-align: center;
   }
 
@@ -265,6 +414,4 @@ const salir = () => {
     text-align: center;
   }
 }
-
-
 </style>

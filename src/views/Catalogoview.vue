@@ -203,7 +203,7 @@ const closeDetails = () => {
   font-size: 3rem;
   margin-bottom: 30px;
   padding-bottom: 20px;
-  border-bottom: 3px solid #b8957a;
+  border-bottom: 3px solid var(--color-principal);
   letter-spacing: 1px;
 }
 
@@ -230,8 +230,8 @@ const closeDetails = () => {
 
 .search-input:focus {
   outline: none;
-  border-color: #b8957a;
-  box-shadow: 0 0 15px rgba(184, 149, 122, 0.2);
+  border-color: var(--color-principal);
+  box-shadow: 0 0 15px rgba(196, 32, 55, 0.2);
 }
 
 .filter-select {
@@ -248,7 +248,7 @@ const closeDetails = () => {
 
 .filter-select:focus {
   outline: none;
-  border-color: #b8957a;
+  border-color: var(--color-principal);
 }
 
 .section-title {
@@ -257,7 +257,7 @@ const closeDetails = () => {
   font-size: 2.5rem;
   margin: 40px 0 20px 0;
   padding-left: 15px;
-  border-left: 5px solid #b8957a;
+  border-left: 5px solid var(--color-principal);
   font-weight: 400;
 }
 
@@ -348,7 +348,7 @@ const closeDetails = () => {
 
 .features ul li::before {
   content: "✦ ";
-  color: #b8957a;
+  color: var(--color-principal);
 }
 
 .characters {
@@ -391,7 +391,7 @@ const closeDetails = () => {
 .details-btn {
   width: 100%;
   padding: 10px;
-  background: linear-gradient(135deg, #b8957a, #a8846b);
+  background: linear-gradient(135deg, var(--color-principal), var(--color-principal-oscuro));
   color: #f5efe8;
   border: none;
   border-radius: 30px;
@@ -405,7 +405,7 @@ const closeDetails = () => {
 
 .details-btn:hover {
   transform: scale(1.02);
-  box-shadow: 0 5px 20px rgba(184, 149, 122, 0.3);
+  box-shadow: 0 5px 20px rgba(196, 32, 55, 0.3);
 }
 
 .influencers-section {
@@ -438,7 +438,7 @@ const closeDetails = () => {
 
 .influencer-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(184, 149, 122, 0.25);
+  box-shadow: 0 8px 30px rgba(196, 32, 55, 0.25);
 }
 
 .influencer-header {
@@ -454,7 +454,7 @@ const closeDetails = () => {
   height: 70px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #b8957a;
+  border: 3px solid var(--color-principal);
   flex-shrink: 0;
 }
 
@@ -491,18 +491,18 @@ const closeDetails = () => {
   align-items: center;
   gap: 8px;
   margin-top: 10px;
-  color: #b8957a;
+  color: var(--color-principal);
   text-decoration: none;
   font-weight: 600;
   font-size: 0.9rem;
   transition: all 0.3s;
   padding: 8px 20px;
   border-radius: 30px;
-  background: rgba(184, 149, 122, 0.1);
+  background: rgba(196, 32, 55, 0.1);
 }
 .social-link:hover {
   color: #5c4033;
-  background: rgba(184, 149, 122, 0.2);
+  background: rgba(196, 32, 55, 0.2);
   transform: translateX(4px);
 }
 
@@ -540,7 +540,7 @@ const closeDetails = () => {
   position: sticky;
   top: 0;
   float: right;
-  background: #b8957a;
+  background: var(--color-principal);
   color: white;
   border: none;
   border-radius: 50%;
@@ -589,7 +589,7 @@ const closeDetails = () => {
 .modal-platforms {
   margin-top: 20px;
   padding-top: 15px;
-  border-top: 2px solid rgba(184, 149, 122, 0.15);
+  border-top: 2px solid rgba(196, 32, 55, 0.15);
 }
 
 .modal-platforms h4 {
@@ -618,14 +618,14 @@ const closeDetails = () => {
   font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.3s;
-  border: 1px solid rgba(184, 149, 122, 0.1);
+  border: 1px solid rgba(196, 32, 55, 0.1);
 }
 
 .modal-platforms .platform-link:hover {
   background: rgba(255, 248, 240, 0.9);
-  border-color: #b8957a;
+  border-color: var(--color-principal);
   transform: translateX(5px);
-  box-shadow: 0 2px 10px rgba(184, 149, 122, 0.15);
+  box-shadow: 0 2px 10px rgba(196, 32, 55, 0.15);
 }
 
 .modal-platforms .platform-icon {
@@ -638,7 +638,7 @@ const closeDetails = () => {
   margin-left: auto;
   font-size: 0.7rem;
   color: #8b7355;
-  background: rgba(184, 149, 122, 0.1);
+  background: rgba(196, 32, 55, 0.1);
   padding: 2px 12px;
   border-radius: 20px;
   font-weight: 400;

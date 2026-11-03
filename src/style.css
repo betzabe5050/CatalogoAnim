@@ -1,6 +1,15 @@
 :root {
   font-family: 'Quicksand', sans-serif;
   line-height: 1.5;
+  --color-principal: #c42037;
+  --color-principal-oscuro: #a61b2f;
+  --color-vino: #7d1021;
+  --color-crema: #fff5ee;
+  --color-principal-claro: #d9344b;
+  --color-principal-profundo: #8c1528;
+    --panel-claro: #f9e3d8;
+  --panel-medio: #efb8a8;
+  --color-vino: #5f0c19;
 }
 
 body {

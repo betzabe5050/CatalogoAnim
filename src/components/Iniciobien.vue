@@ -137,7 +137,7 @@ const series = ref<IAnime[]>(animes)
   font-size: 2rem;
   margin-bottom: 20px;
   padding-left: 15px;
-  border-left: 5px solid #b8957a;
+  border-left: 5px solid var(--color-principal);
 }
 
 .series-grid {
@@ -199,7 +199,7 @@ const series = ref<IAnime[]>(animes)
 .btn-ver-todo {
   display: inline-block;
   padding: 12px 30px;
-  background: linear-gradient(135deg, #b8957a, #a8846b);
+  background: linear-gradient(135deg, var(--color-principal), var(--color-principal-oscuro));
   color: #f5efe8;
   text-decoration: none;
   border-radius: 30px;
@@ -211,6 +211,10 @@ const series = ref<IAnime[]>(animes)
 .btn-ver-todo:hover {
   transform: scale(1.05);
 }
+
+
+
+
 
 @media (max-width: 768px) {
   .about-section {

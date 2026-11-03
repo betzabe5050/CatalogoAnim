@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <NavBar />
-    <RouterView />
+    <main class="contenido-pagina">
+      <RouterView />
+    </main>
     <LoginModal />
     <PiePagina />
   </div>
@@ -25,16 +27,39 @@ import PiePagina from './components/PiePagina.vue'
 body {
   font-family: 'Quicksand', sans-serif;
   min-height: 100vh;
-  background: linear-gradient(135deg, #d4c5b2 0%, #f5efe8 50%, #e8dccc 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-vino) 0%,
+    var(--color-principal-oscuro) 50%,
+    var(--color-vino) 100%
+  );
   background-attachment: fixed;
   padding: 20px;
 }
 
 #app {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  min-height: 100vh;
+  min-height: calc(100vh - 40px);
   text-align: left;
+}
+
+.contenido-pagina {
+  flex: 1;
+  padding: 16px;
+  background: linear-gradient(
+    145deg,
+    var(--panel-claro) 0%,
+    var(--panel-medio) 100%
+  );
+  color: #5c4033;
+  border: 6px solid var(--color-principal);
+  border-radius: 20px;
+  box-shadow:
+    inset 0 0 60px rgba(196, 32, 55, 0.35),
+    0 8px 25px rgba(60, 0, 10, 0.45);
 }
 </style>

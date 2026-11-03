@@ -210,8 +210,8 @@ const enviar = () => {
 .campo input:focus,
 .campo textarea:focus {
   outline: none;
-  border-color: #b8957a;
-  box-shadow: 0 0 15px rgba(184, 149, 122, 0.2);
+  border-color: var(--color-principal);
+  box-shadow: 0 0 15px rgba(196, 32, 55, 0.2);
 }
 
 .error {
@@ -222,7 +222,7 @@ const enviar = () => {
 
 .btn-registro {
   padding: 12px;
-  background: linear-gradient(135deg, #b8957a, #a8846b);
+  background: linear-gradient(135deg, var(--color-principal), var(--color-principal-oscuro));
   color: #f5efe8;
   border: none;
   border-radius: 30px;
@@ -235,7 +235,7 @@ const enviar = () => {
 
 .btn-registro:hover {
   transform: scale(1.02);
-  box-shadow: 0 5px 20px rgba(184, 149, 122, 0.3);
+  box-shadow: 0 5px 20px rgba(196, 32, 55, 0.3);
 }
 
 .exito {

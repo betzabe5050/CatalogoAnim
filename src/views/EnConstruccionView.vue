@@ -42,7 +42,7 @@ const descripcion = computed(() => String(route.meta.descripcion ?? ''))
 .btn-volver {
   display: inline-block;
   padding: 10px 24px;
-  background: linear-gradient(135deg, #b8957a, #a8846b);
+  background: linear-gradient(135deg, var(--color-principal), var(--color-principal-oscuro));
   color: #f5efe8;
   border-radius: 30px;
   font-weight: 600;
