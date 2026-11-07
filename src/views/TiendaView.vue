@@ -3,12 +3,10 @@
     <h1 class="titulo">Tienda</h1>
     <p class="subtitulo">Productos de anime organizados por categoría.</p>
 
-    <div class="filtros">
-      <span class="categoria-activa">
-        {{ categoriaActiva === '' ? 'Todos' : categoriaActiva }}
-      </span>
-      <RouterLink v-if="categoriaActiva !== ''" to="/tienda" class="ver-todos">
-        Ver toda la tienda
+        <div v-if="categoriaActiva !== ''" class="filtros">
+      <RouterLink to="/tienda" class="chip" title="Quitar filtro">
+        {{ categoriaActiva }}
+        <span aria-hidden="true">✕</span>
       </RouterLink>
     </div>
 
@@ -97,19 +95,29 @@ const alAgregar = (producto: IProducto) => {
   margin-bottom: 25px;
 }
 
-.categoria-activa {
-  padding: 8px 22px;
+
+
+
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border: 1.5px solid var(--color-principal);
   border-radius: 30px;
-  background: var(--color-principal);
-  color: #ffffff;
+  color: var(--color-principal);
+  font-size: 0.95rem;
   font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
 }
 
-.ver-todos {
-  color: var(--texto);
-  font-weight: 600;
-  text-decoration: underline;
+.chip:hover {
+  background: var(--color-principal);
+  color: #ffffff;
 }
+
 
 .grid {
   display: grid;

@@ -3,10 +3,10 @@
     <h1 class="titulo">Eventos</h1>
     <p class="subtitulo">Convenciones, cosplay y reuniones de la comunidad anime.</p>
 
-    <div class="filtros">
-      <span class="categoria-activa">{{ tipoActivo }}</span>
-      <RouterLink v-if="tipoActivo !== 'Todos'" to="/eventos" class="ver-todos">
-        Ver todos los eventos
+        <div v-if="tipoActivo !== 'Todos'" class="filtros">
+      <RouterLink to="/eventos" class="chip" title="Quitar filtro">
+        {{ tipoActivo }}
+        <span aria-hidden="true">✕</span>
       </RouterLink>
     </div>
 
@@ -197,19 +197,29 @@ const opcionesCalendario = computed(() => ({
   margin: 20px 0;
 }
 
-.categoria-activa {
-  padding: 8px 22px;
+
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border: 1.5px solid var(--color-principal);
   border-radius: 30px;
-  background: var(--color-principal);
-  color: #ffffff;
+  color: var(--color-principal);
+  font-size: 0.95rem;
   font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
 }
 
-.ver-todos {
-  color: var(--texto);
-  font-weight: 600;
-  text-decoration: underline;
+.chip:hover {
+  background: var(--color-principal);
+  color: #ffffff;
 }
+
+
+
 
 /* Calendario a la izquierda y lista a la derecha */
 .contenido {
@@ -223,9 +233,11 @@ const opcionesCalendario = computed(() => ({
   background: #ffffff;
   border-radius: 20px;
   padding: 16px;
+  container-type: inline-size;
   box-shadow: 0 8px 25px rgba(60, 20, 30, 0.2);
 
-  /* Colores de los botones del calendario */
+
+
   --fc-button-bg-color: var(--color-principal);
   --fc-button-border-color: var(--color-principal);
   --fc-button-hover-bg-color: var(--texto);
@@ -233,7 +245,6 @@ const opcionesCalendario = computed(() => ({
   --fc-button-active-bg-color: var(--texto);
   --fc-button-active-border-color: var(--texto);
 
-  /* Los eventos se ven como marcador, sin barra de color */
   --fc-event-bg-color: transparent;
   --fc-event-border-color: transparent;
   --fc-event-text-color: var(--texto);
@@ -314,14 +325,27 @@ const opcionesCalendario = computed(() => ({
   cursor: pointer;
 }
 
-/* En pantallas pequeñas la lista baja debajo del calendario */
-@media (max-width: 900px) {
-  .contenido { grid-template-columns: 1fr; }
+
+
+@container (max-width: 700px) {
+  .evento-titulo { display: none; }
+  .evento-marca { justify-content: center; }
+  .evento-icono { width: 24px; height: 24px; }
+
+  .calendario :deep(.fc-toolbar) { flex-wrap: wrap; gap: 8px; }
+  .calendario :deep(.fc-toolbar-chunk) { display: flex; align-items: center; gap: 6px; }
+  .calendario :deep(.fc-toolbar-title) { font-size: 1.2rem; }
 }
 
 @media (max-width: 600px) {
   .eventos { padding: 12px; }
-  .evento-icono { width: 16px; height: 16px; }
-  .evento-titulo { font-size: 0.65rem; }
 }
+
+
+
+@media (max-width: 900px) {
+  .contenido { grid-template-columns: 1fr; }
+}
+
+
 </style>

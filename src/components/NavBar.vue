@@ -282,7 +282,7 @@ const salir = () => {
   font-weight: 700;
 }
 
-/* Botón de hamburguesa (solo se ve en pantallas pequeñas) */
+
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -322,8 +322,11 @@ const salir = () => {
     padding-top: 10px;
   }
 
+
   .nav-links.abierto {
     display: flex;
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
   }
 
   .nav-item {
@@ -341,20 +344,26 @@ const salir = () => {
     display: none;
   }
 
-  /* En celular el submenú se ve siempre desplegado bajo su título */
+  
   .nav-item .submenu,
   .nav-item:hover .submenu,
   .nav-item:focus-within .submenu {
     display: flex;
-    flex-direction: column;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 6px;
     position: static;
-    padding: 0 0 0 16px;
+    padding: 4px 0 6px;
     background: transparent;
     box-shadow: none;
   }
 
   .submenu-link {
+    padding: 6px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
     color: #ffffff;
+    font-size: 0.9rem;
     text-align: center;
   }
 

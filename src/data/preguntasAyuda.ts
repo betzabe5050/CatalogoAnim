@@ -21,9 +21,9 @@ export const preguntasAyuda: IPreguntaAyuda[] = [
   }, 
   {
     id: 4,
-    pregunta: '¿Necesito suscripción para ver los animes?',
+    pregunta: '¿Es seguro el proceso de compra?',
     respuesta:
-      'Algunas plataformas requieren suscripción; lo indicamos con una etiqueta junto a cada enlace en los detalles del anime.'
+      'Nuestro sitio web es un lugar seguro para realizar las compras, usted puede obtener información de su pedido y envío en cualquier momento.'
   },
   {
     id: 4,

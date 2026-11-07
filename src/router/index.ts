@@ -7,6 +7,7 @@ import CatalogoView from '../views/Catalogoview.vue'
 import TiendaView from '../views/TiendaView.vue'
 import CarritoView from '../views/CarritoView.vue'
 import EventosView from '../views/EventosView.vue'
+import HistorialView from '../views/HistorialView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -36,10 +37,9 @@ const router = createRouter({
     {
       path: '/historial',
       name: 'historial',
-      component: EnConstruccionView,
+      component: HistorialView,
       meta: {
-        titulo: 'Historial de compras',
-        descripcion: 'Aquí se mostrarán las compras realizadas.'
+        titulo: 'Historial de compras'
       }
     },
     {

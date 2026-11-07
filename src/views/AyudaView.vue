@@ -70,7 +70,7 @@ const crearMensaje = (
   hora: horaActual()
 })
 
-const saludo = '¡Hola! 👋 Soy el asistente del Catálogo Anime. ¿En qué te puedo ayudar?'
+const saludo = '¡Hola! 👋 Soy el asistente de Kiseki. ¿En qué te puedo ayudar?'
 const mensajes = ref<IMensajeChat[]>([crearMensaje('asistente', saludo)])
 
 

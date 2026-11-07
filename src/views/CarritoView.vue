@@ -34,17 +34,45 @@
       <div class="resumen">
         <p>Artículos: <strong>{{ totalArticulos }}</strong></p>
         <p class="total">Total a pagar: <strong>{{ formatoMoneda(totalPagar) }}</strong></p>
-        <button type="button" class="btn-vaciar" @click="vaciar">Vaciar carrito</button>
+
+        <div class="acciones">
+          <button type="button" class="btn-vaciar" @click="vaciar">Vaciar carrito</button>
+          <button type="button" class="btn-finalizar" @click="finalizarCompra">
+            Finalizar compra
+          </button>
+        </div>
       </div>
     </template>
   </section>
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import { useCarrito } from '../composables/useCarrito'
+import { useSesion } from '../composables/useSesion'
+import { useLoginModal } from '../composables/useLoginModal'
+import { useHistorial } from '../composables/useHistorial'
 import { formatoMoneda } from '../utils/moneda'
 
+const router = useRouter()
 const { items, totalArticulos, totalPagar, agregar, quitar, eliminar, vaciar } = useCarrito()
+const { estaLogueado } = useSesion()
+const { abrirLogin } = useLoginModal()
+const { registrarCompra } = useHistorial()
+
+const finalizarCompra = () => {
+  // Para comprar se necesita sesión
+  if (!estaLogueado.value) {
+    abrirLogin()
+    return
+  }
+
+  const pedido = registrarCompra(items.value, totalPagar.value)
+  if (pedido) {
+    vaciar()
+    router.push('/historial')
+  }
+}
 </script>
 
 <style scoped>
@@ -139,10 +167,10 @@ const { items, totalArticulos, totalPagar, agregar, quitar, eliminar, vaciar } =
 .btn-eliminar,
 .btn-vaciar {
   padding: 6px 14px;
-  border: 2px solid #b3392f;
+  border: 2px solid var(--color-principal);
   border-radius: 30px;
   background: none;
-  color: #b3392f;
+  color: var(--color-principal);
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
   cursor: pointer;
@@ -150,7 +178,7 @@ const { items, totalArticulos, totalPagar, agregar, quitar, eliminar, vaciar } =
 
 .btn-eliminar:hover,
 .btn-vaciar:hover {
-  background: #b3392f;
+  background: var(--color-principal);
   color: #fff;
 }
 
@@ -169,9 +197,42 @@ const { items, totalArticulos, totalPagar, agregar, quitar, eliminar, vaciar } =
   font-size: 1.4rem;
 }
 
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.btn-finalizar {
+  padding: 8px 22px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, var(--color-principal), var(--color-principal-oscuro));
+  color: #ffffff;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-finalizar:hover {
+  transform: scale(1.05);
+}
+
 @media (max-width: 640px) {
   .item {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .acciones {
+    justify-content: stretch;
+    width: 100%;
+  }
+
+  .acciones button {
+    flex: 1;
   }
 }
 </style>
